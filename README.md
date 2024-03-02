@@ -15,6 +15,9 @@ In the future I plan to improve the design, as described in the Wishlist section
   * Reverse engineered schematic of M396F motherboard
   * PCB layout closely based on the original M396F layout with a few minor changes
 
+* Version 1.1
+  * Use DS12885 RTC with CR2032 coin cell battery
+
 ## Wishlist
 
 * ATX compatible mount holes
@@ -23,15 +26,12 @@ In the future I plan to improve the design, as described in the Wishlist section
   * Separate VCC plane for the CPU
   * Linear voltage regulator
   * Solder jumpers to bypass the voltage regulator and connect the CPU to 5V
-* DS12885 RTC
-  * Simplify RTC schematic. Remove CD4069, battery switchover circuit, battery header
-  * Use CR2032 coin cell instead of a 3.6V Varta battery
 * PS/2 keyboard and mouse support
   * Add Mini-Din PS/2 connectors (or replace keyboard full DIN with Mini-Din)?
   * Configure 8242 KBC in PS/2 mode
 * Use SST39SF010A Flash ROM instead of the 27C512 EPROM
   * Connect /WR signal to flash ROM (jumper between /WR and VCC?)
-* Use half/full can ocillator for the CPU clock instead of the PLL
+* Use half/full can oscillator for the CPU clock instead of the PLL
   * More readily available part
 * Add support for a separate clock for the FPU
   * Jumper to select the clock mode

@@ -18,6 +18,9 @@ In the future I plan to improve the design, as described in the Wishlist section
 * Version 1.1
   * Use DS12885 RTC with CR2032 coin cell battery
 
+* Version 1.2
+  * Add support for 128 KiB Flash ROM ICs for BIOS. SST39SF010A or similar.
+
 ## Wishlist
 
 * ATX compatible mount holes
@@ -29,7 +32,10 @@ In the future I plan to improve the design, as described in the Wishlist section
 * PS/2 keyboard and mouse support
   * Add Mini-Din PS/2 connectors (or replace keyboard full DIN with Mini-Din)?
   * Configure 8242 KBC in PS/2 mode
-* Use SST39SF010A Flash ROM instead of the 27C512 EPROM
+  * Connect 8242 pin 3 to the input clock
+  * Connect 8242 pin 2 to a 10 kohm pull-down
+* Flash ROM
+  * Check if BIOS_RD signal is generated for writes.
   * Connect /WR signal to flash ROM (jumper between /WR and VCC?)
 * Use half/full can oscillator for the CPU clock instead of the PLL
   * More readily available part
@@ -40,6 +46,7 @@ In the future I plan to improve the design, as described in the Wishlist section
   * VCC and ground planes
 * Consider using SMD components
 * Various optimizations
+  * Add another set of 10uF capacitors on the ISA bus
   * Remove load capacitors on the ISA bus signals (not populated anyway)
   * Use ferrite bead instead of R25 (other motherboards do that?)
   * Move R23 down closer to JP8

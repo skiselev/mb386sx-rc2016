@@ -24,10 +24,11 @@ In the future I plan to improve the design, as described in the Wishlist section
 * Version 1.3
   * Wire keyboard controller in PS/2 mode. Use PS/2 Mini-Din connector in a PS/2 dualport configuration
 
+* Version 1.4
+  * Increase board depth by 0.1". Move mount holes to an ATX compatible locations
+
 ## Wishlist
 
-* ATX compatible mount holes
-  * Make the board a bit longer to accommodate holes on the front side of the board
 * 3.3V CPU support
   * Separate VCC plane for the CPU
   * Linear voltage regulator

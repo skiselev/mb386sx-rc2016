@@ -8515,9 +8515,6 @@
     (path "/b540f997-cabb-4061-85a0-370b4e9dd03a/ff9e9198-a246-43ad-8988-f0f1a2e7bb65"
       (reference "#PWR0155") (unit 1) (value "VCC") (footprint "")
     )
-    (path "/1c0f074e-275c-4c09-93e3-0959df27fb02/1048f546-142f-4134-b133-af476bae82a0"
-      (reference "#PWR0156") (unit 1) (value "VCC") (footprint "")
-    )
     (path "/b540f997-cabb-4061-85a0-370b4e9dd03a/f7b625b8-3877-4549-89fa-b234d7c48294"
       (reference "#PWR0157") (unit 1) (value "GND") (footprint "")
     )
@@ -8761,20 +8758,11 @@
     (path "/b540f997-cabb-4061-85a0-370b4e9dd03a/d300db72-0aab-4b42-b7a7-c0f30136b687"
       (reference "C22") (unit 1) (value "100nF") (footprint "My_Components:Cap_Cer_508")
     )
-    (path "/b540f997-cabb-4061-85a0-370b4e9dd03a/b72df0c1-77ba-4b0e-996a-874dd3628f58"
-      (reference "C23") (unit 1) (value "100nF") (footprint "My_Components:Cap_Cer_508")
-    )
     (path "/b540f997-cabb-4061-85a0-370b4e9dd03a/f9f9d52c-c3cf-4935-8d1b-0924649d81e5"
       (reference "C24") (unit 1) (value "100nF") (footprint "My_Components:Cap_Cer_508")
     )
     (path "/b540f997-cabb-4061-85a0-370b4e9dd03a/e5a4a884-d89f-432e-8508-dc02115f736e"
       (reference "C25") (unit 1) (value "100nF") (footprint "My_Components:Cap_Cer_508")
-    )
-    (path "/b540f997-cabb-4061-85a0-370b4e9dd03a/ea699d5d-18e1-4b3b-b25a-971d32e2e1c2"
-      (reference "C26") (unit 1) (value "100nF") (footprint "My_Components:Cap_Cer_508")
-    )
-    (path "/b540f997-cabb-4061-85a0-370b4e9dd03a/ddf47113-6834-488b-aa7c-4e6021545088"
-      (reference "C27") (unit 1) (value "100nF") (footprint "My_Components:Cap_Cer_508")
     )
     (path "/b540f997-cabb-4061-85a0-370b4e9dd03a/00000000-0000-0000-0000-000063bb0fa8"
       (reference "C28") (unit 1) (value "10uF") (footprint "My_Components:Cap_Elec_Radial_5mm_2.5mm")
@@ -8888,13 +8876,13 @@
       (reference "H4") (unit 1) (value "HOLE") (footprint "MountingHole:MountingHole_4mm_Pad_Via")
     )
     (path "/b540f997-cabb-4061-85a0-370b4e9dd03a/00000000-0000-0000-0000-0000629981b7"
-      (reference "H5") (unit 1) (value "HOLE") (footprint "MountingHole:MountingHole_4mm")
+      (reference "H5") (unit 1) (value "HOLE") (footprint "MountingHole:MountingHole_4mm_Pad_Via")
     )
     (path "/b540f997-cabb-4061-85a0-370b4e9dd03a/00000000-0000-0000-0000-0000628eff14"
-      (reference "H6") (unit 1) (value "HOLE") (footprint "MountingHole:MountingHole_4mm")
+      (reference "H6") (unit 1) (value "HOLE") (footprint "MountingHole:MountingHole_4mm_Pad_Via")
     )
     (path "/b540f997-cabb-4061-85a0-370b4e9dd03a/73fe98f7-8b59-4f14-8dc9-a7e843d94d76"
-      (reference "H7") (unit 1) (value "HOLE") (footprint "MountingHole:MountingHole_4mm")
+      (reference "H7") (unit 1) (value "HOLE") (footprint "MountingHole:MountingHole_4mm_Pad_Via")
     )
     (path "/1c0f074e-275c-4c09-93e3-0959df27fb02/479e2ec2-9712-4822-9c99-fe7c38372dd6"
       (reference "J1") (unit 1) (value "PS/2 Dual Port") (footprint "My_Components:Conn_Mini_DIN_6pin")
@@ -9021,9 +9009,6 @@
     )
     (path "/cb532162-4207-439f-8260-3348a0469de8"
       (reference "R26") (unit 1) (value "470") (footprint "My_Components:Res_Axial_L6.3mm_D2.5mm_P10.16mm_Horizontal")
-    )
-    (path "/1c0f074e-275c-4c09-93e3-0959df27fb02/789a3a6b-3386-4659-824f-9ed8e72afe4f"
-      (reference "R27") (unit 1) (value "150") (footprint "My_Components:Res_Axial_L6.3mm_D2.5mm_P10.16mm_Horizontal")
     )
     (path "/cba192a3-aec1-47d4-80e0-a56e2440906f"
       (reference "R28") (unit 1) (value "330") (footprint "My_Components:Res_Axial_L6.3mm_D2.5mm_P10.16mm_Horizontal")

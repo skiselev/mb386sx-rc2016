@@ -25,7 +25,12 @@ In the future I plan to improve the design, as described in the Wishlist section
   * Wire keyboard controller in PS/2 mode. Use PS/2 Mini-Din connector in a PS/2 dualport configuration
 
 * Version 1.4
-  * Increase board depth by 0.1". Move mount holes to an ATX compatible locations
+  * Increase board depth by 0.1". Move mount holes to ATX compatible locations
+
+* Version 1.5
+  * Add more 10 uF filtering capacitors to the power rails
+  * Remove extra capacitors for /IOW and RESET signals (use capacitors between two leftmost ISA slots
+  * Use resistor arrays for SA17-SA19 pull-ups
 
 ## Wishlist
 
@@ -45,10 +50,8 @@ In the future I plan to improve the design, as described in the Wishlist section
   * VCC and ground planes
 * Consider using SMD components
 * Various optimizations
-  * Add another set of 10uF capacitors on the ISA bus
   * Remove load capacitors on the ISA bus signals (not populated anyway)
   * Use ferrite bead instead of R25 (other motherboards do that?)
   * Move R23 down closer to JP8
   * Use a low profile 14.31818 MHz crystal (or an SMD part)
-  * Use otherwise unused resistors in resistor arrays, e.g. 330 ohm for LEDs
   * Modern front panel connector pinout

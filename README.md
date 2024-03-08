@@ -31,6 +31,13 @@ In the future I plan to improve the design, as described in the Wishlist section
   * Add more 10 uF filtering capacitors to the power rails
   * Remove extra capacitors for /IOW and RESET signals (use capacitors between two leftmost ISA slots
   * Use resistor arrays for SA17-SA19 pull-ups
+* Version 1.6
+  * Use a low profile 14.31818 MHz crystal (or an SMD part)
+  * Add support for the separate FPU clock
+  * Use half can oscillators for the CPU and the FPU clocks
+  * Use discrete resistors for DRAM interface
+  * Use resistors with 300 mil (7.62 mm) lead spacing
+  * Move R23 down closer to JP8
 
 ## Wishlist
 
@@ -41,17 +48,11 @@ In the future I plan to improve the design, as described in the Wishlist section
 * Flash ROM
   * Check if BIOS_RD signal is generated for writes.
   * Connect /WR signal to flash ROM (jumper between /WR and VCC?)
-* Use half/full can oscillator for the CPU clock instead of the PLL
-  * More readily available part
-* Add support for a separate clock for the FPU
-  * Jumper to select the clock mode
-  * Add half/full can ocillator for the FPU clock
 * 4 layer PCB
   * VCC and ground planes
 * Consider using SMD components
+* Consider ATX power supply support
 * Various optimizations
   * Remove load capacitors on the ISA bus signals (not populated anyway)
   * Use ferrite bead instead of R25 (other motherboards do that?)
-  * Move R23 down closer to JP8
-  * Use a low profile 14.31818 MHz crystal (or an SMD part)
   * Modern front panel connector pinout

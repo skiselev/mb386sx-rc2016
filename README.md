@@ -31,6 +31,7 @@ In the future I plan to improve the design, as described in the Wishlist section
   * Add more 10 uF filtering capacitors to the power rails
   * Remove extra capacitors for /IOW and RESET signals (use capacitors between two leftmost ISA slots
   * Use resistor arrays for SA17-SA19 pull-ups
+
 * Version 1.6
   * Use a low profile 14.31818 MHz crystal (or an SMD part)
   * Add support for the separate FPU clock
@@ -38,6 +39,9 @@ In the future I plan to improve the design, as described in the Wishlist section
   * Use discrete resistors for DRAM interface
   * Use resistors with 300 mil (7.62 mm) lead spacing
   * Move R23 down closer to JP8
+
+* Version 1.7
+  * Use single front panel connector
 
 ## Wishlist
 
@@ -55,4 +59,3 @@ In the future I plan to improve the design, as described in the Wishlist section
 * Various optimizations
   * Remove load capacitors on the ISA bus signals (not populated anyway)
   * Use ferrite bead instead of R25 (other motherboards do that?)
-  * Modern front panel connector pinout

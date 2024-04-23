@@ -57,5 +57,6 @@ In the future I plan to improve the design, as described in the Wishlist section
 * Consider using SMD components
 * Consider ATX power supply support
 * Various optimizations
+  * Renumber components' references according to their values
   * Remove load capacitors on the ISA bus signals (not populated anyway)
   * Use ferrite bead instead of R25 (other motherboards do that?)

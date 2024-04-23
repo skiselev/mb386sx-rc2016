@@ -6448,10 +6448,10 @@
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
-  (global_label "~{BIOS_RD}" (shape output) (at 43.18 30.48 90) (fields_autoplaced)
+  (global_label "~{BIOS_CS}" (shape output) (at 43.18 30.48 90) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid ed6d157e-a5c9-4cc3-a9d0-a31b7dc708eb)
-    (property "Intersheet References" "${INTERSHEET_REFS}" (id 0) (at 43.1006 20.1445 90)
+    (property "Intersheet References" "${INTERSHEET_REFS}" (id 0) (at 43.1006 20.205 90)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
@@ -8475,9 +8475,6 @@
     (path "/1c0f074e-275c-4c09-93e3-0959df27fb02/5f3c654a-1630-4276-81a9-b8667adc2533"
       (reference "#PWR0169") (unit 1) (value "VCC") (footprint "")
     )
-    (path "/1c0f074e-275c-4c09-93e3-0959df27fb02/8a6cf017-c05e-494f-a769-71b74e775078"
-      (reference "#PWR0170") (unit 1) (value "GND") (footprint "")
-    )
     (path "/1c0f074e-275c-4c09-93e3-0959df27fb02/091b25d1-c1f0-4c96-8e1a-16a990d9bc0f"
       (reference "#PWR0171") (unit 1) (value "VCC") (footprint "")
     )
@@ -8510,9 +8507,6 @@
     )
     (path "/1c0f074e-275c-4c09-93e3-0959df27fb02/674b0798-9b13-4edf-b9df-85ba36cdf474"
       (reference "#PWR0181") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/1c0f074e-275c-4c09-93e3-0959df27fb02/f7489361-84b8-436d-bdd6-6f406d7b0efb"
-      (reference "#PWR0182") (unit 1) (value "VCC") (footprint "")
     )
     (path "/1c0f074e-275c-4c09-93e3-0959df27fb02/1ee86499-ea61-42cd-a554-d312a886379e"
       (reference "#PWR0183") (unit 1) (value "GND") (footprint "")
@@ -8621,6 +8615,9 @@
     )
     (path "/b6031188-d651-4edc-8130-93e28086f07f"
       (reference "#PWR0222") (unit 1) (value "VCC") (footprint "")
+    )
+    (path "/1c0f074e-275c-4c09-93e3-0959df27fb02/f016daa8-5f0a-46dd-bab3-46ca215d13a6"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/1c0f074e-275c-4c09-93e3-0959df27fb02/022fcc95-6553-4a01-9c3c-8db4d8771f4d"
       (reference "BT1") (unit 1) (value "CR2032") (footprint "My_Components:Battery_Holder_CR2032_Universal")

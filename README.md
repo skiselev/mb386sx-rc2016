@@ -43,6 +43,13 @@ In the future I plan to improve the design, as described in the Wishlist section
 * Version 1.7
   * Use single front panel connector
 
+* Version 1.8
+  * Connect /OE and /WE of the BIOS ROM to allow Flash ROM in-system programming
+  * Rotate the PCB into portrait orientation
+
+* Version 1.9
+  * Add pin headers for the CPU
+
 ## Wishlist
 
 * 3.3V CPU support

@@ -5,9 +5,13 @@
   (paper "A3")
 
   (title_block
-    (title "ISA Bus")
-    (date "2024-02-14")
-    (company "Sergey Kiselev")
+    (title "386SX Motherboard Based on SARC RC2016 Chipset")
+    (date "2026-01-09")
+    (rev "1.9")
+    (company "Copyright (C) 2024-2026 Sergey Kiselev")
+    (comment 1 "https://github.com/Marco-Both/M396F-Replika")
+    (comment 2 "Based on the M396F motherboard replica by Marco Both:")
+    (comment 3 "https://github.com/skiselev/mb386sx-rc2016")
   )
 
   (lib_symbols

@@ -4,6 +4,16 @@
 
   (paper "A3")
 
+  (title_block
+    (title "386SX Motherboard Based on SARC RC2016 Chipset")
+    (date "2026-01-09")
+    (rev "1.9")
+    (company "Copyright (C) 2024-2026 Sergey Kiselev")
+    (comment 1 "https://github.com/Marco-Both/M396F-Replika")
+    (comment 2 "Based on the M396F motherboard replica by Marco Both:")
+    (comment 3 "https://github.com/skiselev/mb386sx-rc2016")
+  )
+
   (lib_symbols
     (symbol "74xx:74LS05" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (id 0) (at 0 1.27 0)
@@ -6005,7 +6015,7 @@
   (symbol (lib_id "power:GND") (at 73.66 241.3 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid f016daa8-5f0a-46dd-bab3-46ca215d13a6)
-    (property "Reference" "#PWR?" (id 0) (at 73.66 247.65 0)
+    (property "Reference" "#PWR0141" (id 0) (at 73.66 247.65 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 73.66 245.11 0))

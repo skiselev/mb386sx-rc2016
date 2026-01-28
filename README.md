@@ -53,6 +53,11 @@ In the future I plan to improve the design, as described in the Wishlist section
 * Version 2.0
   * Use ATX power supply connector
   * Add ATX power-on circuit
+ 
+* Version 2.1
+  * Renumber the component references according to the values and locations on the PCB
+  * Update silkscreen
+  * Add signal names on the back silkscreen
 
 ## Wishlist
 
@@ -67,6 +72,5 @@ In the future I plan to improve the design, as described in the Wishlist section
   * VCC and ground planes
 * Consider using SMD components
 * Various optimizations
-  * Renumber components' references according to their values
   * Remove load capacitors on the ISA bus signals (not populated anyway)
   * Use ferrite bead instead of R25 (other motherboards do that?)

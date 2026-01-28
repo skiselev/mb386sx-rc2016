@@ -50,6 +50,10 @@ In the future I plan to improve the design, as described in the Wishlist section
 * Version 1.9
   * Add pin headers for the CPU
 
+* Version 2.0
+  * Use ATX power supply connector
+  * Add ATX power-on circuit
+
 ## Wishlist
 
 * 3.3V CPU support
@@ -62,7 +66,6 @@ In the future I plan to improve the design, as described in the Wishlist section
 * 4 layer PCB
   * VCC and ground planes
 * Consider using SMD components
-* Consider ATX power supply support
 * Various optimizations
   * Renumber components' references according to their values
   * Remove load capacitors on the ISA bus signals (not populated anyway)

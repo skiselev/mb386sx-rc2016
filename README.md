@@ -56,7 +56,29 @@ Connector          | J14 - J17 | 2x14 pin socket, 2 mm pitch, through hole      
 Connector          | JP1 - JP3 | 2 pin header, 2.54 mm (0.1") pitch, through hole     | 3        | Mouser
 Connector          | JP4 - JP6 | 3 pin header, 2.54 mm (0.1") pitch, through hole     | 3        | Mouser. Some are optional, can be hardwired for the soldered CPU.
 Switch             | SW1, SW2  | 6 mm tactile switch, vertical, through hole          | 2        | Mouser. Optional
-
+Capacitor          | C1 - C3   | 30 pF, 50V MLCC, 5.08 mm (0.2") pitch                | 3        | Mouser
+Capacitor          | C4 - C8   | 47 pF, 50V MLCC, 5.08 mm (0.2") pitch                | 5        | Mouser
+Capacitor          | C9        | 100 pF, 50V MLCC, 5.08 mm (0.2") pitch               | 1        | Mouser
+Capacitor          | C10       | 220 pF, 50V MLCC, 5.08 mm (0.2") pitch               | 1        | Mouser
+Capacitor          | C11 - C22 | 100 nF, 25V MLCC, 5.08 mm (0.2") pitch               | 12       | Mouser
+Capacitor          | C23, C24  | 1 uF, 10V MLCC, 5.08 mm (0.2") pitch                 | 2        | Mouser
+Capacitor          | C25 - C49 | 10 uF, 25V electrolytic, 5 mm diameter, 2.54 mm (0.1") pitch | 25 | Mouser
+Ferrite Choke      | L1 - L4   | axial                                                | 4        | Mouser
+Resistor           | R1 - R12  | 10 ohm, 0.25 W, axial                                | 12       | Mouser
+Resistor           | R13 - R15 | 22 ohm, 0.25 W, axial                                | 3        | Mouser
+Resistor           | R16, R17  | 56 ohm, 0.25 W, axial                                | 2        | Mouser
+Resistor           | R18 - R21 | 100 ohm, 0.25 W, axial                               | 4        | Mouser
+Resistor           | R22       | 330 ohm, 0.25 W, axial                               | 1        | Mouser
+Resistor           | R23 - R29 | 470 ohm, 0.25 W, axial                               | 7        | Mouser
+Resistor           | R30, R31  | 1 kohm, 0.25 W, axial                                | 2        | Mouser
+Resistor           | R32       | 4.7 kohm, 0.25 W, axial                              | 1        | Mouser
+Resistor           | R33 - R38 | 10 kohm, 0.25 W, axial                               | 6        | Mouser
+Resistor           | R39       | 20 kohm, 0.25 W, axial                               | 1        | Mouser
+Resistor           | R40       | 1 Mohm, 0.25 W, axial                                | 1        | Mouser
+Resistor Array     | RN1       | 330 ohm, 8 resistors, 9 pin SIL                      | 1        | Mouser
+Resistor Array     | RN2, RN3  | 4.7 kohm, 5 resistors, 6 pin SIL                     | 2        | Mouser
+Resistor Array     | RN4       | 4.7 kohm, 8 resistors, 9 pin SIL                     | 1        | Mouser
+Resistor Array     | RN5       | 10 kohm, 4 resistors, 5 pin SIL                      | 1        | Mouser
 
 ## Changes
 

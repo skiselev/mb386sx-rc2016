@@ -9,6 +9,55 @@ I reverse engineered the schematic based on his PCB layout and made a PCB layout
 
 In the future I plan to improve the design, as described in the Wishlist section below
 
+## Hardware Documentation
+
+### Schematic and PCB Layout
+
+* [Schematic - Version 2.1](KiCad/AT386SX-Schematic-2.1.pdf)
+* [PCB Layout - Version 2.1](KiCad/AT386SX-Board-2.1.pdf)
+
+### Bill of Materials
+
+#### Version 2.1
+
+Component type     | Reference | Description                                          | Quantity | Possible sources and notes 
+------------------ | --------- | ---------------------------------------------------- | -------- | --------------------------
+PCB                |           | Alsea River 386SX PCB - Version 2.1                  | 1        | Or order from a PCB manufacturer of your choice using provided Gerber or KiCad files
+Integrated Circuit | U1        | 386SX CPU, TI486SXLC, Cx486SLC CPU, 100 pin BQFP     | 1        | eBay
+Integrated Circuit | U2        | 387SX FPU or compatible, 68 pin PLCC                 | 1        | eBay. Optional
+Integrated Circuit | U3        | SARC RC2016A5, 208 pin PQFP                          | 1        | UTsource
+Integrated Circuit | U4        | DS12885 RTC, 24 pin DIP                              | 1        | Mouser
+Integrated Circuit | U5        | VT82C42N keyboard/mouse controller, 40 pin DIP       | 1        | eBay
+Integrated Circuit | U6        | SST39SF010A 128 KiB Flash ROM, 32 pin DIP            | 1        | Mouser
+Integrated Circuit | U7        | 74HC05 inverters with open drain outputs, 14 pin DIP | 1        | Mouser (possible replacement: 74LS06?)
+Integrated Circuit | U8        | 74HCT14 inverters with Schmitt trigger inputs, 14 pin DIP | 1   | Mouser
+Integrated Circuit | U9        | 74HCT74 D-flip flops, 14 pin DIP                     | 1        | Mouser
+Integrated Circuit | U10       | LM7905 -5V voltage regulator, TO-220-3               | 1        | Mouser
+Transistor         | Q1        | 2N3904, NPN transistor, TO-92                        | 1        | Mouser
+LED                | D1        | 3 mm LED, blue                                       | 1        | Mouser. Optional
+LED                | D2        | 3 mm LED, bi-color red/green                         | 1        | Mouser. Optional
+Crystal Oscillator | X1        | 66 MHz (twice desired CPU frequency), 5V, DIP-8      | 1        | Mouser
+Crystal Oscillator | X2        | 66 MHz (twice desired FPU frequency), 5V, DIP-8      | 1        | Mouser. Optional
+Crystal Resonator  | Y1        | 14.31818 MHz, parallel, HC-49U                       | 1        | Mouser
+Crystal Resonator  | Y1        | 32768 Hz, tuning fork, ?pf, 2 mm?, radial            | 1        | Mouser
+IC Socket          | U2        | 68 pin PLCC, through hole                            | 1        | Mouser 
+IC Socket          | U4        | 24 pin DIP                                           | 1        | Mouser [517-4824-6000-CP](https://www.mouser.com/ProductDetail/517-4824-6000-CP)
+IC Socket          | U5        | 40 pin DIP                                           | 1        | Mouser [517-4840-6000-CP](https://www.mouser.com/ProductDetail/517-4840-6000-CP)
+IC Socket          | U6        | 32 pin DIP                                           | 1        | Mouser [517-4832-6000-CP](https://www.mouser.com/ProductDetail/517-4832-6000-CP)
+IC Socket          | U7 - U9   | 14 pin DIP                                           | 3        | Mouser [517-4814-3000-CP](https://www.mouser.com/ProductDetail/517-4814-3000-CP)
+Battery            | BT1       | CR2032 battery                                       | 1        | Mouser
+Battery Socket     | BT1       | CR2032 battery socket, through hole                  | 1        | Mouser
+Connector          | J1 - J6   | ISA card edge connector, 98 pin                      | 6        | Mouser
+Connector          | J7 - J10  | SIMM 30 socket, 30 pin                               | 4        | eBay
+Connector          | J11       | PS/2 Keyboard/Mouse connector, Mini-DIN 6 pin        | 1        | Mouser
+Connector          | J12       | ATX power connector, 20 pin                          | 1        | Mouser
+Connector          | J13       | 2x8 pin header, 2.54 mm (0.1") pitch, through hole   | 1        | Mouser
+Connector          | J14 - J17 | 2x14 pin socket, 2 mm pitch, through hole            | 4        | Mouser. Optional
+Connector          | JP1 - JP3 | 2 pin header, 2.54 mm (0.1") pitch, through hole     | 3        | Mouser
+Connector          | JP4 - JP6 | 3 pin header, 2.54 mm (0.1") pitch, through hole     | 3        | Mouser. Some are optional, can be hardwired for the soldered CPU.
+Switch             | SW1, SW2  | 6 mm tactile switch, vertical, through hole          | 2        | Mouser. Optional
+
+
 ## Changes
 
 * Version 2.1

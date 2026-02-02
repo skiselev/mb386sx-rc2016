@@ -24,7 +24,7 @@ In the future I plan to improve the design, as described in the Wishlist section
 
 Component type     | Reference | Description                                          | Quantity | Possible sources and notes 
 ------------------ | --------- | ---------------------------------------------------- | -------- | --------------------------
-PCB                |           | Alsea River 386SX PCB - Version 2.1                  | 1        | Or order from a PCB manufacturer of your choice using provided Gerber or KiCad files
+PCB                |           | Alsea River 386SX PCB - Version 2.1                  | 1        | Order from a PCB manufacturer of your choice using provided Gerber or KiCad files
 Integrated Circuit | U1        | 386SX CPU, TI486SXLC, Cx486SLC CPU, 100 pin BQFP     | 1        | eBay
 Integrated Circuit | U2        | 387SX FPU or compatible, 68 pin PLCC                 | 1        | eBay. Optional
 Integrated Circuit | U3        | SARC RC2016A5, 208 pin PQFP                          | 1        | UTsource

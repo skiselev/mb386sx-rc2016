@@ -55,7 +55,7 @@ Connector          | J7 - J10  | SIMM 30 socket, 30 pin                         
 Connector          | J11       | PS/2 Keyboard/Mouse connector, Mini-DIN 6 pin        | 1        | Mouser [806-KMDGX-6S-BS](https://www.mouser.com/ProductDetail/806-KMDGX-6S-BS)
 Connector          | J12       | ATX power connector, 20 pin                          | 1        | Mouser [538-46015-2006](https://www.mouser.com/ProductDetail/538-46015-2006)
 Connector          | J13       | 2x8 pin header, 2.54 mm (0.1") pitch, through hole   | 1        | Mouser [737-PH2-16-UA]()
-Connector          | J14 - J17 | 2x14 pin socket, 2 mm pitch, through hole            | 4        | Optional. Mouser [200-SQT11301LD]()
+Connector          | J14 - J17 | 2x14 pin socket, 2 mm pitch, through hole            | 4        | Optional. Mouser [538-79107-7062]() [200-SQT11301LD](), [200-SQT11301FD]()
 Connector          | JP1 - JP3 | 2 pin header, 2.54 mm (0.1") pitch, through hole     | 3        | Mouser [737-PH2-02-UA]()
 Connector          | JP4 - JP6 | 3 pin header, 2.54 mm (0.1") pitch, through hole     | 3        | Mouser [737-PH1-03-UA](). Some headers are optional, and can be hardwired for the soldered CPU.
 Connector          | JP1 - JP6 | Shunt, 2 pin, 2.54 mm (0.1") pitch                   | 4        | Mouser [737-MSA-G](), [806-SX1100-B](https://www.mouser.com/ProductDetail/806-SX1100-B)

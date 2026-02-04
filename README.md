@@ -137,7 +137,10 @@ Resistor Array     | RN5       | 10 kohm, 4 resistors, bussed, 5 pin SIL        
 
 * On-board speaker
 * Add a polyfuse on the PS/2 power
+* Try using more common values for C1 - C2: 27 pF or 33 pF are more commonly available than 30 pF
+* Use a more common 22 kohm value for R39
 * 3.3V CPU support
+  * The current plan is to test this using the [386SX Universal Socket Adapter](https://github.com/skiselev/i386sx-socket)
   * Separate VCC plane for the CPU
   * Linear voltage regulator
   * Solder jumpers to bypass the voltage regulator and connect the CPU to 5V

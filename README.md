@@ -47,7 +47,7 @@ IC Socket          | U4        | 24 pin DIP                                     
 IC Socket          | U5        | 40 pin DIP                                           | 1        | Mouser [737-ICS-640-T](), [517-4840-6000-CP](https://www.mouser.com/ProductDetail/517-4840-6000-CP), [571-1-2199299-5]()
 IC Socket          | U6        | 32 pin DIP                                           | 1        | Mouser [737-ICS-632-T](), [517-4832-6000-CP](https://www.mouser.com/ProductDetail/517-4832-6000-CP), [571-1-2199300-2]()
 IC Socket          | U7 - U9   | 14 pin DIP                                           | 3        | Mouser [737-ICS-314-T](), [517-4814-3000-CP](https://www.mouser.com/ProductDetail/517-4814-3000-CP), [571-1-2199298-3]()
-Oscillator Socket  [ X1, X2    | 4 pin DIP                                            | 2        | Mouser [535-1108800]()
+Oscillator Socket  | X1, X2    | 4 pin DIP                                            | 2        | Mouser [535-1108800]()
 Battery            | BT1       | CR2032 battery                                       | 1        | Mouser [81-CR2032](https://www.mouser.com/ProductDetail/81-CR2032), [658-CR2032](https://www.mouser.com/ProductDetail/658-CR2032), or [614-CR2032-200](https://www.mouser.com/ProductDetail/614-CR2032-200)
 Battery Socket     | BT1       | CR2032 battery socket, through hole                  | 1        | Mouser [122-2420-GR](https://www.mouser.com/ProductDetail/122-2420-GR), or [122-2620-GR](https://www.mouser.com/ProductDetail/122-2620-GR)
 Connector          | J1 - J6   | ISA card edge connector, 98 pin                      | 6        | Mouser [587-395-098-520-350](https://www.mouser.com/ProductDetail/587-395-098-520-350)

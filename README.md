@@ -1,5 +1,5 @@
 # mb386sx-rc2016
-SARC 2016 Chipset Based 386SX/486SLC Motherboard
+SARC RC2016 Chipset Based 386SX/486SLC Motherboard
 
 ## Introduction
 
@@ -132,6 +132,14 @@ Resistor Array     | RN5       | 10 kohm, 4 resistors, bussed, 5 pin SIL        
 * Version 1.0
   * Reverse engineered schematic of M396F motherboard
   * PCB layout closely based on the original M396F layout with a few minor changes
+
+## Known Issues
+
+* Versions 1.8 - 2.1
+  * The SARC RC2016 chipset does not generate /SRAMR together with /BIOS signal. Presumably /BIOS signal (chipset pin 156) should be connected to the Flash ROM's /OE.
+    * Workaround: Cut the trace going to the Flash ROM pin 24. Solder a wire between pin 22 and pin 24.
+* Versions 1.0 - 2.1
+  * DRAM bank 0 and bank 1 swapped around. Bank 0 is the one closer to the edge of the board.
 
 ## Wishlist
 

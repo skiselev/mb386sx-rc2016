@@ -9,6 +9,10 @@ I reverse engineered the schematic based on his PCB layout and made a PCB layout
 
 In the future I plan to improve the design, as described in the Wishlist section below
 
+## Status
+
+* Board version 2.1 boots up to BIOS and Linux, after performing the fix described in the Known Issues section.
+
 ## Hardware Documentation
 
 ### Schematic and PCB Layout
@@ -66,7 +70,7 @@ Capacitor          | C9        | 100 pF, 50V MLCC, 5.08 mm (0.2") pitch         
 Capacitor          | C10       | 220 pF, 50V MLCC, 5.08 mm (0.2") pitch               | 1        | Mouser [810-FG28C0G1H221JNT6]()
 Capacitor          | C11 - C22 | 100 nF, 25V MLCC, 5.08 mm (0.2") pitch               | 12       | Mouser [594-K104K15X7RF53H5](https://www.mouser.com/ProductDetail/594-K104K15X7RF53H5) or [810-FG28X7R1H104KNT6](https://www.mouser.com/ProductDetail/810-FG28X7R1H104KNT6)
 Capacitor          | C23, C24  | 1 uF, 10V MLCC, 5.08 mm (0.2") pitch                 | 2        | Mouser [810-FG28X5R1H105KRT0]()
-Capacitor          | C25 - C49 | 10 uF, 25V electrolytic, 5 mm diameter, 2.5 mm pitch | 25       | Mouser [667-EEU-FR1E470H]()
+Capacitor          | C25 - C49 | 10 uF, 25V electrolytic, 5 mm diameter, 2.5 mm pitch | 25       | Mouser [667-EEU-FR1H100]()
 Ferrite Choke      | L1 - L4   | axial                                                | 4        | Mouser [623-2743001112LF]()
 Resistor           | R1 - R12  | 10 ohm, 0.25 W, axial                                | 12       | Mouser [708-CF14JT10R0]()
 Resistor           | R13 - R15 | 22 ohm, 0.25 W, axial                                | 3        | Mouser [708-CF14JT22R0]()

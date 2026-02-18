@@ -55,7 +55,7 @@ LED                | D2        | 3 mm LED, bi-color red/green                   
 Crystal Oscillator | X1        | 66 MHz (twice desired CPU frequency), 5V, DIP-8      | 1        | Mouser 50 MHz: [520-TCH5000](), [815-ACH-50-EK](), [774-MXO45HS-3C-50.0](); 66.6666MHz: [774-MXO45HS2C66.6666](), [520-TCH6666-X](); 80 MHz: [520-ECS-2200B-800](), [774-MXO45HS-3C-80.0]
 Crystal Oscillator | X2        | 66 MHz (twice desired FPU frequency), 5V, DIP-8      | 1        | Optional. See above.
 Crystal Resonator  | Y1        | 14.31818 MHz, parallel, HC-49U                       | 1        | Mouser [815-ABL-14.31818B2](), [FOXSLF/143-20]()
-Crystal Resonator  | Y1        | 32768 Hz, tuning fork, ?pf, 2 mm?, radial            | 1        | Mouser [815-AB26T32768KHZ6B](https://www.mouser.com/ProductDetail/815-AB26T32768KHZ6B), [520-ECS327-6-13-X](https://www.mouser.com/ProductDetail/520-ECS327-6-13-X), or [628-VT200F-6PF20PPM](https://www.mouser.com/ProductDetail/628-VT200F-6PF20PPM)
+Crystal Resonator  | Y2        | 32768 Hz, tuning fork, ?pf, 2 mm?, radial            | 1        | Mouser [815-AB26T32768KHZ6B](https://www.mouser.com/ProductDetail/815-AB26T32768KHZ6B), [520-ECS327-6-13-X](https://www.mouser.com/ProductDetail/520-ECS327-6-13-X), or [628-VT200F-6PF20PPM](https://www.mouser.com/ProductDetail/628-VT200F-6PF20PPM)
 IC Socket          | U2        | 68 pin PLCC, through hole                            | 1        | Mouser [737-PLCC-68-AT](), [517-8468-11B1-RK-TP](), [575-682444]()
 IC Socket          | U4        | 24 pin DIP                                           | 1        | Mouser [737-ICS-624-T](), [517-4824-6000-CP](https://www.mouser.com/ProductDetail/517-4824-6000-CP), [571-1-2199298-8]()
 IC Socket          | U5        | 40 pin DIP                                           | 1        | Mouser [737-ICS-640-T](), [517-4840-6000-CP](https://www.mouser.com/ProductDetail/517-4840-6000-CP), [571-1-2199299-5]()
@@ -81,6 +81,7 @@ Capacitor          | C9        | 220 pF, 50V MLCC, 5.08 mm (0.2") pitch         
 Capacitor          | C10 - C21 | 100 nF, 25V MLCC, 5.08 mm (0.2") pitch               | 12       | Mouser [594-K104K15X7RF53H5](https://www.mouser.com/ProductDetail/594-K104K15X7RF53H5) or [810-FG28X7R1H104KNT6](https://www.mouser.com/ProductDetail/810-FG28X7R1H104KNT6)
 Capacitor          | C22, C23  | 1 uF, 10V MLCC, 5.08 mm (0.2") pitch                 | 2        | Mouser [810-FG28X5R1H105KRT0]()
 Capacitor          | C24 - C48 | 10 uF, 25V electrolytic, 5 mm diameter, 2.5 mm pitch | 25       | Mouser [667-EEU-FR1H100]()
+Polyfuse           | F1        | 1.1A, 5.08 mm (0.2") pitch                           | 1        | Mouser [650-RUSBF110-2](https://www.mouser.com/ProductDetail/650-RUSBF110-2)
 Ferrite Choke      | L1 - L4   | axial                                                | 4        | Mouser [623-2743001112LF]()
 Resistor           | R1 - R12  | 10 ohm, 0.25 W, axial                                | 12       | Mouser [708-CF14JT10R0]()
 Resistor           | R13 - R15 | 22 ohm, 0.25 W, axial                                | 3        | Mouser [708-CF14JT22R0]()
@@ -122,6 +123,7 @@ Finally, the board also should work with 64 KiB EPROMs and OTP ROMs, e.g., 27C51
   * Renumber electrolytic capacitors, so that the reference numbers increase from the top of the PCB to the bottom
   * Use 22 kohm resistor for R39
   * Remove load capacitors on the ISA bus signals, that are not populated anyway
+  * Add a polyfuse for the PS/2 port
 
 * Version 2.1
   * Renumber the component references according to the values and locations on the PCB
@@ -184,7 +186,6 @@ Finally, the board also should work with 64 KiB EPROMs and OTP ROMs, e.g., 27C51
 ## Wishlist
 
 * On-board speaker
-* Add a polyfuse on the PS/2 power
 * Try using more common values for C1 - C2: 27 pF or 33 pF are more commonly available than 30 pF
 * 3.3V CPU support
   * The current plan is to test this using the [386SX Universal Socket Adapter](https://github.com/skiselev/i386sx-socket)

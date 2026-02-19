@@ -11,10 +11,10 @@ The subsequent versions contain the following improvements:
 
 * Use Dallas DS12885 RTC/NVRAM (aka CMOS) with a CR2032 battery instead of Motorola MC146818 with a NiCad battery. This reduces the likliehood of motherboard damage due to a leaking battery. A more modern RTC IC also reduces the number of components
 * Use SST39SF010A Flash ROM instead of an EPROM or OTP ROM. The Flash ROM is in-circuit programmable, allowing BIOS and BIOS extension upgrades. It has a bigger 128 KiB capacity, all of which is mapped to the CPU memory. The SST39SF010A is a currently manufactured part
-* Use PS/2 compatible keyboard controller (VIA VT82C42N or similar). The motherboard implements a dual PS/2 port with both keyboard and mouse signals. A PS/2 keyboard/mouse spliter cable can be used to connect both a keyboard and a mouse. This functionality has not been tested yet
+* Use PS/2 compatible keyboard controller, VIA VT82C42N or similar. The motherboard implements a dual PS/2 port with both keyboard and mouse signals. A PS/2 keyboard/mouse spliter cable can be used to connect both a keyboard and a mouse. This functionality has not been tested yet
 * Use ATX case compatible mounting holes placement. Implement ATX power supply power on circuit. This allows using the motherboard with more modern ATX cases and power supplies
 * Use DIP-8 / half-can crystal oscillators for the CPU and FPU clocks. This removes the need for a difficult to get clock synthesizer IC used in the original motherboard, while still allowing changing the CPU and the FPU clock by switching the oscillators
-* Implement headers for the CPU. The CPU can be either installed on a [separate i386 socket board](https://github.com/skiselev/i386sx-socket), or soldered down on the motherboard
+* Implement headers for the CPU. The CPU can be either installed on a [386SX Universal Socket Adapter](https://github.com/skiselev/i386sx-socket), or soldered down on the motherboard
 
 ![Alsea River 386SX - Assembled Board](images/Alsea_River-386SX-Assembled_Board.jpg)
 
@@ -22,6 +22,11 @@ The subsequent versions contain the following improvements:
 
 * Board version 2.1 boots up to BIOS, DOS, and Linux, after performing the fix described in the Known Issues section
 * Board version 2.2 has the fix for the BIOS /OE issue, but it has not been actually built and tested yet
+* The following CPUs have been tested with the board version 2.1:
+  * Intel 386SX, part name: NG80386SX33. Installed on a 386SX Universal Socket Adapter, configured for 5V. Runs well at 33 MHz
+  * Texas Instruments 486SLCX2-50, part name: TI486SXLC2-G50-WN. Installed on a 386SX Universal Socket Adapter, configured for 3.3V. Runs well at 25 MHz, 33 MHz, and 40 MHz. Unable to enable clock doubling yet.
+  * Texas Instruments 486SLCX2-50, part name: TI486SXLC2-G50-PQ. Installed on a 386SX Universal Socket Adapter, configured for 3.3V. Runs well at 25 MHz, 33 MHz, and 40 MHz. Unable to enable clock doubling yet.
+  * Texas Instruments 486SLC/E-33. part name: TX486SLC/E-33PAF. Installed on a 386SX Universal Socket Adapter, configured for 5V. Runs well at 33 MHz. Also works at 40 MHz, although gets quite hot. Stability has not been verified yet with 40 MHz.
 
 ## Hardware Documentation
 

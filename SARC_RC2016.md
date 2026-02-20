@@ -8,12 +8,12 @@ The SARC RC2016 configuation registers are accessed by writing the configuration
 
 Register Index | Register Bits | Function                                                                   | Default Settings
 ---------------|---------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------
-0x80           | Bits 7-5      | Unknown                                                                    | Set to 000 by both AMI 5.20 and Award 4.50 BIOSes
+0x80           | Bits 7-5      | Unknown                                                                    | Read as 000 on both AMI 5.20 and Award 4.50 BIOSes
 0x80           | Bit 4         | Current turbo switch state: 0 = on, 1 = off                                | Appears to be read-only, reflecting the current state of the turbo switch. Also see 0x90, bit 6
-0x80           | Bits 3-1      | Unknown                                                                    | Set to 000 by both AMI 5.20 and Award 4.50 BIOSes
-0x80           | Bit 0         | Unknown                                                                    | Set to 1 by both AMI 5.20 and Award 4.50 BIOSes
+0x80           | Bits 3-1      | Unknown                                                                    | Read as 000 on both AMI 5.20 and Award 4.50 BIOSes
+0x80           | Bit 0         | Unknown                                                                    | Read as 1 on both AMI 5.20 and Award 4.50 BIOSes
 0x81           | Bit 7         | Unknown                                                                    | Set to 0 by both AMI 5.20 and Award 4.50 BIOSes
-0x81           | Bit 6         | Number of DRAM banks: 0 = 1 bank, 1 = banks                                | Set by the BIOS depending on the number of DRAM banks installed
+0x81           | Bit 6         | Number of DRAM banks: 0 = 1 bank, 1 = 2 banks                              | Set by the BIOS depending on the number of DRAM banks installed
 0x81           | Bits 5-4      | DRAM bank (SIMM) size: 00 = 256 KiB, 10 = 1 MiB, 11 = 4 MiB                | Set by the BIOS depending  on the SIMM size installed
 0x81           | Bits 3-1      | Unknown                                                                    | Set to 111 by both AMI 5.20 and Award 4.50 BIOSes
 0x81           | Bit 0         | ROM BIOS shadowing control: 0 = disabled, 1 = enabled                      | Set to 1 by BIOS if ROM BIOS shadowing is enabled

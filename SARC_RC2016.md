@@ -43,5 +43,5 @@ Register Index | Register Bits | Function                                       
 0x90           | Bit 7         | Unknown                                                                    | Set to 0 by AMI 5.20 BIOS; set to 1 by Award 4.50 BIOS
 0x90           | Bit 6         | Current turbo switch state: 0 = off, 1 = on                                | Appears to be read-only, reflecting the current state of the turbo switch. Also see 0x80, bit 4
 0x90           | Bit 5         | Unknown                                                                    | Set 0 to by both AMI 5.20 and Award 4.50 BIOSes
-0x90           | Bit 4         | Number of wait states: 0 = 1 wait state, 1 = O wait states                 | Set by the BIOS according to the wait states configuration setting
+0x90           | Bit 4         | Number of wait states: 0 = 1 wait state, 1 = 0 wait states                 | Set by the BIOS according to the wait states configuration setting
 0x90           | Bit 3         | RAS to CAS width: 0 = CLK2 * 4, 1 = CLK2 * 6                               | Set by AMI 5.20 BIOS according to the RAS to CAS width setting. Award 5.20 BIOS sets to 0 for 25 and 33 MHz CPUs and to 1 for 40 MHz CPUs

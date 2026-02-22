@@ -34,14 +34,19 @@ Register Index | Register Bits | Function                                       
 0x85           | Bits 4,0      | EC000-EFFFF ROM shadowing control: xxx0xxx0 = disabled, xxx1xxx1 = enabled | Set to xxx1xxx1 by both AMI 5.20 and Award 4.50 BIOSes when EC000-EFFFF shadowing is enabled
 0x86           | Bits 7,6      | DRAM refresh burst: 00 = 1, 01 = 2, 10 = 3, 11 = 4                         | Set by the BIOS according to the DRAM refresh burst / rate configruation setting
 0x86           | Bits 5,4      | DRAM refresh rate: 00 = 1, 01 = 2, 10 = 4, 11 = 8                          | Set by the BIOS according to the DRAM refresh burst / rate configruation setting
-0x86           | Bits 3,2      | Unknown                                                                    | Set to 00 by AMI 5.20 BIOS; set to 10 by Award 4.50 BIOS?!
+0x86           | Bits 3,2      | Unknown                                                                    | Set to 00 by AMI 5.20 BIOS?!; Award 4.50 BIOS setting depends on the CPU speed: 01 for 16 - 25 MHz, 00 for 33 - 40 MHz
 0x86           | Bits 1,0      | DRAM RAS precharge: 01 = CLK2 * 6, 10 = CLK2 * 4                           | Set by the BIOS according to the DRAM RAS precharge configuration setting
 0x87           | Bit 7         | IO channel refresh: 0 = enabled, 1 = disabled                              | Set by the BIOS according to the IO channel refresh configuration setting
 0x87           | Bit 6         | ATBUS stepping: 0 = enabled, 1 = disabled                                  | Set by the BIOS according to the ATBUS stepping configuration setting
-0x87           | Bits 5-0      | Unknown                                                                    | Set to 100100 by both AMI 5.20 and Award 4.50 BIOSes
+0x87           | Bit 5         | Turbo control: 0 = turbo off, 1 = turbo on                                 | Set by the AWARD BIOS according to the "Boot Up System Speed" configuration setting*
+0x87           | Bit 4         | Turbo LED control: 0 = LED on, 1 = LED off                                 | Set by the AWARD BIOS according to the "Boot Up System Speed" configuration setting*
+0x87           | Bits 3-0      | Unknown                                                                    | Set to 0100 by both AMI 5.20 and Award 4.50 BIOSes
+0x88           | Bits 7-0      | Unknown                                                                    | AWARD BIOS sets to 00000100 (0x04) when 256 KiB SIMMs with parity are installed. Forcing register to 0x04 with other SIMMs doesn't seem to do anything.
 0x88 - 0x8F    | Bits 7-0      | Unknown or not implemented                                                 | Read as 00000000 with both AMI 5.20 and Award 4.50 BIOSes
 0x90           | Bit 7         | Unknown                                                                    | Set to 0 by AMI 5.20 BIOS; set to 1 by Award 4.50 BIOS
 0x90           | Bit 6         | Current turbo switch state: 0 = off, 1 = on                                | Appears to be read-only, reflecting the current state of the turbo switch. Also see 0x80, bit 4
 0x90           | Bit 5         | Unknown                                                                    | Set 0 to by both AMI 5.20 and Award 4.50 BIOSes
 0x90           | Bit 4         | Number of wait states: 0 = 1 wait state, 1 = 0 wait states                 | Set by the BIOS according to the wait states configuration setting
 0x90           | Bit 3         | RAS to CAS width: 0 = CLK2 * 4, 1 = CLK2 * 6                               | Set by AMI 5.20 BIOS according to the RAS to CAS width setting. Award 5.20 BIOS sets to 0 for 25 and 33 MHz CPUs and to 1 for 40 MHz CPUs
+
+* Some BIOS calls, seem to return the setting to the BIOS configuration setting regardless of the Turbo Switch or modifications to the configuration register

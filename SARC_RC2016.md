@@ -50,3 +50,17 @@ Register Index | Register Bits | Function                                       
 0x90           | Bit 3         | RAS to CAS width: 0 = CLK2 * 4, 1 = CLK2 * 6                               | Set by AMI 5.20 BIOS according to the RAS to CAS width setting. Award 5.20 BIOS sets to 0 for 25 and 33 MHz CPUs and to 1 for 40 MHz CPUs
 
 * Some BIOS calls, seem to return the setting to the BIOS configuration setting regardless of the Turbo Switch or modifications to the configuration register
+
+## Chipset Auto Settings - Award 4.50 BIOS
+
+Setting            | Auto-16MHZ | Auto-20MHZ | Auto-25MHZ | Auto-33MHZ | Auto-40MHZ | Auto-50MHZ | AUTO-50DX2 | AUTO-66DX2
+-------------------|------------|------------|------------|------------|------------|------------|------------|-----------
+Register 0x86      | 11110110   | 11110110   | 11110110   | 11110010   | 11100010   | N/A        | N/A        | N/A
+Register 0x87      | 00XXXXXX   | 00XXXXXX   | 00XXXXXX   | 00XXXXXX   | 00XXXXXX   | N/A        | N/A        | N/A
+DRAM refresh burst | 4          | 4          | 4          | 4          | 4          | N/A        | N/A        | N/A
+DRAM refresh rate  | 8          | 8          | 8          | 8          | 4          | N/A        | N/A        | N/A
+Unknown, bits 3,2* | 01         | 01         | 01         | 00         | 00         | N/A        | N/A        | N/A
+DRAM RAS precharge | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | N/A        | N/A        | N/A
+RAS to CAS width*  | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | CLK2 * 6?! | N/A        | N/A        | N/A
+
+* Need to verify these settings

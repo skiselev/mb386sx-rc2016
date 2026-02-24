@@ -20,13 +20,15 @@ The subsequent versions contain the following improvements:
 
 ## Status
 
-* Board version 2.1 boots up to BIOS, DOS, and Linux, after performing the fix described in the Known Issues section
 * Board version 2.2 has the fix for the BIOS /OE issue, but it has not been actually built and tested yet
+* Board version 2.1 boots up to BIOS, DOS, and Linux, after performing the fix described in the Known Issues section
 * The following CPUs have been tested with the board version 2.1:
-  * Intel 386SX, part name: NG80386SX33. Installed on a 386SX Universal Socket Adapter, configured for 5V. Runs well at 33 MHz
+  * Intel 386SX, part name: NG80386SX33. Installed on a 386SX Universal Socket Adapter, configured for 5V. Runs well at 33 MHz.
   * Texas Instruments 486SLCX2-50, part name: TI486SXLC2-G50-WN. Installed on a 386SX Universal Socket Adapter, configured for 3.3V. Runs well at 25 MHz, 33 MHz, and 40 MHz. Unable to enable clock doubling yet.
   * Texas Instruments 486SLCX2-50, part name: TI486SXLC2-G50-PQ. Installed on a 386SX Universal Socket Adapter, configured for 3.3V. Runs well at 25 MHz, 33 MHz, and 40 MHz. Unable to enable clock doubling yet.
   * Texas Instruments 486SLC/E-33. part name: TX486SLC/E-33PAF. Installed on a 386SX Universal Socket Adapter, configured for 5V. Runs well at 33 MHz. Also works at 40 MHz, although gets quite hot. Stability has not been verified yet with 40 MHz.
+* PS/2 mouse tested and working properly with both 2 button and 3 button wheeled mouse using [CuteMouse driver](https://cutemouse.sourceforge.net/).
+* AMI BIOS 5.10 and [Award BIOS 4.50](https://github.com/skiselev/mb386sx-rc2016/tree/main/BIOS) from other SARC RC2014 based motherboards tested. The latter provides better configurability using MODBIN.
 
 ## Hardware Documentation
 

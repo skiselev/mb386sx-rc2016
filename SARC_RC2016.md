@@ -59,8 +59,5 @@ Register 0x86      | 11110110   | 11110110   | 11110110   | 11110010   | 1110001
 Register 0x87      | 00XXXXXX   | 00XXXXXX   | 00XXXXXX   | 00XXXXXX   | 00XXXXXX   | N/A        | N/A        | N/A
 DRAM refresh burst | 4          | 4          | 4          | 4          | 4          | N/A        | N/A        | N/A
 DRAM refresh rate  | 8          | 8          | 8          | 8          | 4          | N/A        | N/A        | N/A
-Unknown, bits 3,2* | 01         | 01         | 01         | 00         | 00         | N/A        | N/A        | N/A
+RAS to CAS width   | CLK2 * 2   | CLK2 * 2   | CLK2 * 2   | CLK2 * 4   | CLK2 * 4   | N/A        | N/A        | N/A
 DRAM RAS precharge | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | N/A        | N/A        | N/A
-RAS to CAS width*  | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | CLK2 * 6?! | N/A        | N/A        | N/A
-
-* Need to verify these settings

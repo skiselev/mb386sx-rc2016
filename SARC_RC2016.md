@@ -39,8 +39,8 @@ Register Index | Register Bits | Function                                       
 0x86           | Bits 1,0      | DRAM RAS precharge: 01 = CLK2 * 6, 10 = CLK2 * 4                           | Set by the BIOS according to the DRAM RAS precharge configuration setting
 0x87           | Bit 7         | IO channel refresh: 0 = enabled, 1 = disabled                              | Set by the BIOS according to the IO channel refresh configuration setting
 0x87           | Bit 6         | ATBUS stepping: 0 = enabled, 1 = disabled                                  | Set by the BIOS according to the ATBUS stepping configuration setting
-0x87           | Bit 5         | Turbo control: 0 = turbo off, 1 = turbo on                                 | Set by AWARD BIOS according to the "Boot Up System Speed" configuration setting. Can be changed using Ctrl-Alt-Plus/Minus.
-0x87           | Bit 4         | Turbo LED control: 0 = LED on, 1 = LED off                                 | Set by AWARD BIOS according to the "Boot Up System Speed" configuration setting. Can be changed using Ctrl-Alt-Plus/Minus.
+0x87           | Bit 5         | Turbo control: 0 = turbo off, 1 = turbo on                                 | Set by AWARD BIOS according to the "Boot Up System Speed" configuration setting. Can be changed using Ctrl-Alt-Plus/Minus. (1)
+0x87           | Bit 4         | Turbo LED control: 0 = LED on, 1 = LED off                                 | Set by AWARD BIOS according to the "Boot Up System Speed" configuration setting. Can be changed using Ctrl-Alt-Plus/Minus. (1)
 0x87           | Bits 3-0      | Unknown                                                                    | Set to 0100 by both AMI 5.20 and Award 4.50 BIOSes
 0x88           | Bits 7-0      | Unknown                                                                    | AWARD BIOS sets to 00000100 (0x04) when 256 KiB SIMMs with parity are installed. Forcing register to 0x04 with other SIMMs doesn't seem to do anything.
 0x88 - 0x8F    | Bits 7-0      | Unknown or not implemented                                                 | Read as 00000000 with both AMI 5.20 and Award 4.50 BIOSes
@@ -50,9 +50,9 @@ Register Index | Register Bits | Function                                       
 0x90           | Bit 4         | Number of wait states: 0 = 1 wait state, 1 = 0 wait states                 | Set by the BIOS according to the wait states configuration setting
 0x90           | Bit 3         | RAS to CAS width: 0 = CLK2 * 4, 1 = CLK2 * 6                               | Set by AMI 5.20 BIOS according to the RAS to CAS width setting. Award 5.20 BIOS sets to 0 for 25 and 33 MHz CPUs and to 1 for 40 MHz CPUs
 
-* Some BIOS calls, seem to return the setting to the BIOS configuration setting regardless of the Turbo Switch or modifications to the configuration register
+1. Some Award BIOS calls set these bits to the current BIOS turbo setting regardless of the turbo switch or modifications to the configuration register
 
-## Chipset Auto Settings - Award 4.50 BIOS
+### Chipset Auto Settings - Award 4.50 BIOS
 
 Setting            | Auto-16MHZ | Auto-20MHZ | Auto-25MHZ | Auto-33MHZ | Auto-40MHZ | Auto-50MHZ | AUTO-50DX2 | AUTO-66DX2
 -------------------|------------|------------|------------|------------|------------|------------|------------|-----------
@@ -62,3 +62,106 @@ DRAM refresh burst | 4          | 4          | 4          | 4          | 4      
 DRAM refresh rate  | 8          | 8          | 8          | 8          | 4          | N/A        | N/A        | N/A
 RAS to CAS width   | CLK2 * 2   | CLK2 * 2   | CLK2 * 2   | CLK2 * 4   | CLK2 * 4   | N/A        | N/A        | N/A
 DRAM RAS precharge | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | N/A        | N/A        | N/A
+
+
+## Chipset Pinout
+
+### Pins by Function - Chipset, RTC, Keyboard Controller, and BIOS
+
+Pin                                       | Signal Name | Description
+------------------------------------------|-------------|------------
+13,26,41,65,78,93,117,130,145,169,182,197 | GND         | Ground
+12,40,64,92,116,144,168,196               | VCC         | VCC / 5 V Power
+1,104,105                                 | NC          | Not connected (1)
+7                                         | SPEAKER     | PC speaker, output
+8                                         | RESET_SW    | Reset switch, input
+9                                         | TURBO_LED   | Turbo LED, output
+10                                        | PULLUP      | 4.7k pull-up, input (2)
+11                                        | TURBO_SW    | Turbo switch, input
+14                                        | X1          | 14.31818 MHz oscillator, input
+15                                        | X2          | 14.31818 MHz oscillator, output
+141                                       | KBC_IRQ1    | IRQ1 from keyboard controller, input
+142                                       | BIOS_CS     | Active high CS for BIOS?, output (3)
+143                                       | POWER_GOOD  | Power good from power supply, input
+149                                       | RTC_DS      | DS signal to RTC, output
+150                                       | RTC_AS      | AS signal to RTC, output
+151                                       | RTC_RW      | RW signal to RTC, output
+152                                       | /KBC_CS     | /CS to keyboard controller, output
+153                                       | /GATE_A20   | /GATE_A20 from keyboard, input
+154                                       | KBC_CLK     | Clock to keyboard controller, output
+155                                       | /KBC_RC     | Reset from keyboard controller, input
+156                                       | /BIOS_CS    | /CS to BIOS ROM (E0000-FFFFF), output
+159                                       | /RTC_IRQ8   | /IRQ8 from RTC, input
+
+1. Potentially pins 104 and 105 are /RAS pins for 4 DRAM banks configuration? Perhaps configuration register 0x81 bit 7 controls that? Need to check.
+2. Potentially pin 10 is an input. Can it be read using configuration registers 0x80 or 0x90? Need to check.
+3. Pin 142 appears to be active when /BIOS_CS, pin 156 is also active, but it gets active a bit (one ISA clock cycle?!) earlier than /BIOS_CS.
+
+### Pins by Function - CPU and FPU Interface
+
+Pin             | Signal Name | Description
+----------------|-------------|------------
+42-63,74        | A32-A1      | CPU address bus, input
+37              | FPU_PEREQ   | FPU PEREQ, output
+38              | FPU_BUSY    | FPU BUSY, output
+39              | FPU_ERROR   | FPU ERROR, input
+66              | INTR        | CPU INTR, output
+67              | NMI         | CPU NMI, output
+68              | CPU_PEREQ   | CPU PEREQ, output
+69              | CPU_BUSY    | CPU BUSY, output
+70              | CPU_RESET   | CPU RESET, output
+71              | W/R         | CPU and FPU W/R, input
+72              | D/C         | CPU D/C, input
+73              | M/IO        | CPU and FPU M/IO, input
+75              | /BHE        | CPU /BHE, input
+76              | /BLE        | CPU /BLE, input
+77              | /ADS        | CPU and FPU /ADS, input
+79              | CLK2        | CPU and FPU CLK2, input
+80              | /READY      | CPU and FPU /READY, output
+81              | HOLD        | CPU HOLD, output
+82              | HLDA        | CPU HLDA, input
+83-90,94-101    | D0-D15      | CPU data bus, bi-dir
+91              | FPU_RESET   | FPU RESET, output
+
+### Pins by Function - DRAM Interface
+
+Pin             | Signal Name | Description
+----------------|-------------|------------
+102             | /RAS01      | DRAM /RAS, banks 0,1, output
+103             | /RAS23      | DRAM /RAS, banks 2,3, output
+106-109         | /CAS0-/CAS3 | DRAM /CAS0-/CAS3, output
+110             | /MWE        | DRAM write enable, output
+111-115,118-123 | MA0-MA10    | DRAM address bus, output
+160             | DP_LO       | DRAM parity, low byte, bi-dir
+161             | DP_HI       | DRAM parity, high byte, bi-dir
+
+### Pins by Function - ISA Bus
+
+Pin                  | Signal Name                      | Description
+---------------------|----------------------------------|------------
+2                    | AEN                              | ISA AEN, output
+3                    | TC                               | ISA TC, output
+4                    | OSC                              | ISA OSC clock 14.31818 MHz, output
+5                    | BCLK                             | ISA bus clock, output
+6                    | /REFRESH                         | ISA bus refresh, output
+16,18,20,22,24,27,39 | /DACK7-/DACK5,/DACK3-/DACK0      | ISA DMA acknowledge, output
+17,19,21,23,25,28,30 | DRQ7-DRQ5,DRQ3-DRQ0              | ISA DMA request, input
+31                   | /0WS                             | ISA /0WS, input
+32                   | MASTER                           | ISA MASTER, input
+33                   | IO_CH_RDY                        | ISA IO_CH_RDY, input
+34                   | IOCS16                           | ISA IOCS16, input
+35                   | IO_CH_CHK                        | ISA IO_CH_CHK, input
+36                   | MEMCS16                          | ISA MEMCS16, input
+124-129,131-140      | SD0-SD16                         | ISA SD0-SD0 data bus, bi-dir
+157                  | /RESET                           | Reset to ISA and peripherals, output
+158                  | ALE                              | ISA ALE, output
+162-167,170          | LA23-LA17                        | ISA LA23-LA17 unlatched address, output or bi-dir? 
+171-181,183-188      | SA16-SA0                         | ISA SA16-SA0 latched address, output or bi-dir?
+189                  | /SBHE                            | ISA /SBHE, output
+190                  | /IOR                             | ISA I/O read, output
+191                  | /IOW                             | ISA I/O write, output
+192                  | /MEMR                            | ISA memory read, output
+193                  | /MEMW                            | ISA memory write, output
+194                  | /SMEMR                           | ISA memory read, low 1 MiB, output
+195                  | /SMEMW                           | ISA memory write, low 1 MiB, output
+198-208              | IRQ15,IRQ14,IRQ12-IRQ9,IRQ7-IRQ3 | ISA interrupt request, input

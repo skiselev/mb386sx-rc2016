@@ -10,7 +10,8 @@ Register Index | Register Bits | Function                                       
 ---------------|---------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------
 0x80           | Bits 7-5      | Unknown                                                                    | Read as 000 on both AMI 5.20 and Award 4.50 BIOSes
 0x80           | Bit 4         | Current turbo switch state: 0 = on, 1 = off                                | Appears to be read-only, reflecting the current state of the turbo switch. Also see 0x90, bit 6
-0x80           | Bits 3-1      | Unknown                                                                    | Read as 000 on both AMI 5.20 and Award 4.50 BIOSes
+0x80           | Bit 3         | FPU status: 0 = no FPU, 1 = FPU installed                                  | Appears to be read-only, set by chipset depending on whether the FPU is installed or not
+0x80           | Bits 2-1      | Unknown                                                                    | Read as 000 on both AMI 5.20 and Award 4.50 BIOSes
 0x80           | Bit 0         | Unknown                                                                    | Read as 1 on both AMI 5.20 and Award 4.50 BIOSes
 0x81           | Bit 7         | Unknown                                                                    | Set to 0 by both AMI 5.20 and Award 4.50 BIOSes
 0x81           | Bit 6         | Number of DRAM banks: 0 = 1 bank, 1 = 2 banks                              | Set by the BIOS depending on the number of DRAM banks installed

@@ -93,9 +93,8 @@ Pin                                       | Signal Name | Description
 156                                       | /BIOS_CS    | /CS to BIOS ROM (E0000-FFFFF), output
 159                                       | /RTC_IRQ8   | /IRQ8 from RTC, input
 
-1. Potentially pins 104 and 105 are /RAS pins for 4 DRAM banks configuration? Perhaps configuration register 0x81 bit 7 controls that? Need to check.
-2. Potentially pin 10 is an input. Can it be read using configuration registers 0x80 or 0x90? Need to check.
-3. Pin 142 appears to be active when /BIOS_CS, pin 156 is also active, but it gets active a bit (one ISA clock cycle?!) earlier than /BIOS_CS.
+1. Needs to be pulled up with 4.7k - 10k 
+2. Pin 142 appears to be active when /BIOS_CS, pin 156 is also active, but it gets active a bit (one ISA clock cycle?!) earlier than /BIOS_CS.
 
 ### Pins by Function - CPU and FPU Interface
 

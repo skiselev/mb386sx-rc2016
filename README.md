@@ -122,6 +122,12 @@ Finally, the board also should work with 64 KiB EPROMs and OTP ROMs, e.g., 27C51
 
 ## Changes
 
+* Version 2.3
+  * Use non-plated through holes for the plastic posts of SIMM30 sockets
+  * Ground the shield of the PS/2 connector
+  * Update silkscreen: Add acknowledgements, move references and values of DRAM resistors to make them more visible
+  * Update schematic: Update a few pins on the RC2016A symbol
+
 * Version 2.2
   * Fix the Flash ROM /OE issue: Connect Flash ROM /OE to ISA /MEMR
   * Renumber DRAM banks - swap Bank 0 and Bank 1. Rename DRAM signals accordingly

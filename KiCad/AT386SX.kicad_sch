@@ -6,8 +6,8 @@
 
   (title_block
     (title "386SX Motherboard Based on SARC RC2016 Chipset")
-    (date "2026-02-18")
-    (rev "2.2")
+    (date "2026-02-26")
+    (rev "2.3")
     (company "Copyright (C) 2024-2026 Sergey Kiselev")
     (comment 1 "https://github.com/Marco-Both/M396F-Replika")
     (comment 2 "Based on the M396F motherboard replica by Marco Both:")
@@ -2233,7 +2233,7 @@
           (number "1" (effects (font (size 1.27 1.27))))
         )
         (pin input line (at -41.91 -77.47 90) (length 5.08)
-          (name "R22_PULLUP?" (effects (font (size 1.27 1.27))))
+          (name "PULLUP?" (effects (font (size 1.27 1.27))))
           (number "10" (effects (font (size 1.27 1.27))))
         )
         (pin tri_state line (at 77.47 54.61 180) (length 5.08)
@@ -2420,8 +2420,8 @@
           (name "KBC_IRQ1" (effects (font (size 1.27 1.27))))
           (number "141" (effects (font (size 1.27 1.27))))
         )
-        (pin input line (at -29.21 77.47 270) (length 5.08)
-          (name "KBC_IRQ12?" (effects (font (size 1.27 1.27))))
+        (pin output line (at -29.21 77.47 270) (length 5.08)
+          (name "BIOS_CS" (effects (font (size 1.27 1.27))))
           (number "142" (effects (font (size 1.27 1.27))))
         )
         (pin input line (at -31.75 77.47 270) (length 5.08)
@@ -2481,7 +2481,7 @@
           (number "155" (effects (font (size 1.27 1.27))))
         )
         (pin output line (at -64.77 77.47 270) (length 5.08)
-          (name "~{BIOS}" (effects (font (size 1.27 1.27))))
+          (name "~{BIOS_CS}" (effects (font (size 1.27 1.27))))
           (number "156" (effects (font (size 1.27 1.27))))
         )
         (pin output line (at -77.47 64.77 0) (length 5.08)
@@ -10807,6 +10807,9 @@
     )
     (path "/b540f997-cabb-4061-85a0-370b4e9dd03a/53d85d0a-ae75-44bf-aff8-0d14c3b835b5"
       (reference "#PWR0156") (unit 1) (value "VCC") (footprint "")
+    )
+    (path "/1c0f074e-275c-4c09-93e3-0959df27fb02/32b90dd8-69d2-4559-8507-e6a06a379530"
+      (reference "#PWR0157") (unit 1) (value "GND") (footprint "")
     )
     (path "/b64989fe-6b27-4acc-92bb-7beb2d401842"
       (reference "#PWR0158") (unit 1) (value "GND") (footprint "")

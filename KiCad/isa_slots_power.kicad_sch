@@ -6,8 +6,8 @@
 
   (title_block
     (title "386SX Motherboard Based on SARC RC2016 Chipset")
-    (date "2026-02-18")
-    (rev "2.2")
+    (date "2026-02-26")
+    (rev "2.3")
     (company "Copyright (C) 2024-2026 Sergey Kiselev")
     (comment 1 "https://github.com/Marco-Both/M396F-Replika")
     (comment 2 "Based on the M396F motherboard replica by Marco Both:")

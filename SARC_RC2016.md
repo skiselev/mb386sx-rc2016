@@ -19,7 +19,7 @@ Register Index | Register Bits | Function                                       
 0x81           | Bits 3-1      | Unknown                                                                    | Set to 111 by both AMI 5.20 and Award 4.50 BIOSes
 0x81           | Bit 0         | ROM BIOS shadowing control: 0 = disabled, 1 = enabled                      | Set to 1 by BIOS if ROM BIOS shadowing is enabled
 0x82           | Bits 7-6      | Unknown                                                                    | Set to 00 by both AMI 5.20 and Award 4.50 BIOSes
-0x82           | Bits 5-4      | System BIOS ROM F000F-FFFFF shadowing control: 00 = disabled, 11 = enabled | Set to 11 by both AMI 5.20 and Award 4.50 BIOSes when System BIOS shadowing is enabled
+0x82           | Bits 5-4      | System BIOS ROM F0000-FFFFF shadowing control: 00 = disabled, 11 = enabled | Set to 11 by both AMI 5.20 and Award 4.50 BIOSes when System BIOS shadowing is enabled
 0x82           | Bits 3-0      | Unknown                                                                    | Set to 1111 by both AMI 5.20 and Award 4.50 BIOSes
 0x83           | Bits 7,3      | C0000-C3FFF ROM shadowing control: 0xxx0xxx = disabled, 1xxx1xxx = enabled | Set to 1xxx1xxx by both AMI 5.20 and Award 4.50 BIOSes when Video BIOS shadowing is enabled
 0x83           | Bits 6,2      | C4000-C7FFF ROM shadowing control: x0xxx0xx = disabled, x1xxx1xx = enabled | Set to x1xxx1xx by both AMI 5.20 and Award 4.50 BIOSes when Video BIOS shadowing is enabled
@@ -93,8 +93,9 @@ Pin                                       | Signal Name | Description
 156                                       | /BIOS_CS    | /CS to BIOS ROM (E0000-FFFFF), output
 159                                       | /RTC_IRQ8   | /IRQ8 from RTC, input
 
-1. Needs to be pulled up with 4.7k - 10k 
-2. Pin 142 appears to be active when /BIOS_CS, pin 156 is also active, but it gets active a bit (one ISA clock cycle?!) earlier than /BIOS_CS.
+1. Pins 1, 104, and 105 are not connected. They seem to be pulled high by the chipset during normal operation.
+2. Needs to be pulled up with 4.7k - 10k. System will not POST without it. System hangs if this pin is grounded.
+3. Pin 142 appears to be active when /BIOS_CS, pin 156 is also active, but it gets active a bit (one ISA clock cycle?!) earlier than /BIOS_CS.
 
 ### Pins by Function - CPU and FPU Interface
 

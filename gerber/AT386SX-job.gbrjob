@@ -5,13 +5,13 @@
       "Application": "Pcbnew",
       "Version": "(6.0.2)"
     },
-    "CreationDate": "2026-02-18T13:44:30-08:00"
+    "CreationDate": "2026-02-26T08:30:50-08:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
       "Name": "AT386SX",
       "GUID": "41543338-3653-4582-9e6b-696361645f70",
-      "Revision": "2.2"
+      "Revision": "2.3"
     },
     "Size": {
       "X": 172.82,

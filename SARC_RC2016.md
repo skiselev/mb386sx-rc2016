@@ -63,6 +63,27 @@ DRAM refresh rate  | 8          | 8          | 8          | 8          | 4      
 RAS to CAS width   | CLK2 * 2   | CLK2 * 2   | CLK2 * 2   | CLK2 * 4   | CLK2 * 4   | N/A        | N/A        | N/A
 DRAM RAS precharge | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | CLK2 * 4   | N/A        | N/A        | N/A
 
+### DRAM Refresh Timing
+
+SARC RC2016 uses 14.31818 MHz / 12 / 18 = 66.2878704 kHz as the DRAM refresh frequency.
+
+(To check: Is the divider of 18 configurable using the PIT channel 1?)
+
+* The DRAM refresh rate setting - chipset configuration register 0x86, bits 5,4 set the divider for this refresh frequency.
+  * Refresh rate of 1 (register 0x86, bits 5,4 = '00') setting results in 66.2878704 kHz refresh frequency or approximately 15 us refresh period.
+  * Refresh rate of 8 (register 0x86, bits 5,4 = '11') setting results in 66.2878704 / 8 = 8.2859838 kHz refresh frequency or approximately 120 us refresh period.
+  * The slower refresh rate slighly improves system performance. Ideally, the DRAM/SIMM datasheet should be consulted to determine the correct refresh rates/periods.
+* The DRAM refresh burst setting: chipset configuration register 0x86, bits 7,6 set the number of refresh cycles (burst) for each refresh period. 
+
+### ISA Bus Timing
+
+The SARC RC2016 uses 14.31818 MHz / 2 = 7.15909 MHz as ISA clock. That is the frequency BCLK signal is running at.
+
+* 8-bit I/O: /IOR and /IOW timing: 4.5 clock cycles. Signals activated on the falling clock BCLK edge. Singals deactivated on the rising BCLK clock egde.
+* 16-bit I/O: /IOR and /IOW timing: 1.5 clock cycles. Signals activated on the falling clock BCLK edge. Singals deactivated on the rising BCLK clock egde.
+* Memory: /MEMR, /MEMW, /SMEMR, and /SMEMW timing: 2 clock cycles. Signals activated on the falling? clock BCLK edge. Singals deactivated on the falling? BCLK clock egde.
+
+IO channel refresh setting - chipset configuration register 0x87, bit 7: when set to 1, enables generating refresh cycles on ISA bus by activating /REFRESH signal and suspending other transactions. When set 0 disables ISA refresh cycles, improving system performance.
 
 ## Chipset Pinout
 

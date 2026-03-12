@@ -34,12 +34,12 @@ The subsequent versions contain the following improvements:
 
 ### Schematic and PCB Layout
 
-* [Schematic - Version 2.2](KiCad/AT386SX-Schematic-2.2.pdf)
-* [PCB Layout - Version 2.2](KiCad/AT386SX-Board-2.2.pdf)
+* [Schematic - Version 2.3](KiCad/AT386SX-Schematic-2.3.pdf)
+* [PCB Layout - Version 2.3](KiCad/AT386SX-Board-2.3.pdf)
 
 ### Bill of Materials
 
-#### Version 2.2
+#### Version 2.3
 
 [Alsea River 386SX Motherboard project on Mouser.com](https://www.mouser.com/Tools/Project/Share?AccessID=6eadf3eb2e) - View and order most components except of the CPU, chipset, keyboard controller, SIMM-30 sockets, and the PCB.
 

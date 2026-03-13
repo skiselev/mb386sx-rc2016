@@ -35,7 +35,7 @@ VGA display controllers typically can detect the display type automatically, and
 
 Position | Description
 ---------|------------
-Open     | Normal operation / keyboard unlocked
+Open     | Normal operation, keyboard unlocked
 Closed   | Keyboard locked
 
 ### JP4 - CPU Clock Select
@@ -99,3 +99,21 @@ Bank 0 (J1, J2) | Bank 1 (J3, J3) | Memory Size
 1 MiB x 2       | 1 MiB x 2       | 4 MiB
 4 MiB x 2       | None            | 8 MiB
 4 MiB x 2       | 4 MiB x 2       | 16 MiB
+
+## PS/2 Mouse Support
+
+The PS/2 connector on Alsea River 386SX Motherboard contains PS/2 keyboard and PS/2 mouse signals. A PS/2 Y splitter cable should be used to connect both a keyboard and a mouse.
+Note that with most Y splitter cables, the keyboard should be connected to the mouse connector, and the mouse should be connected to the keyboard connector. Refer to the table below for the splitter cable pinout.
+
+### PS/2 Combo Port Pinout
+
+Pin - Motherboard | Pin - Keyboard | Pin Mouse | Signal Description
+------------------|----------------|-----------|-------------------
+1                 | 1              | -         | Keyboard data
+2                 | -              | 1         | Mouse data
+3                 | 3              | 3         | GND, Ground
+4                 | 4              | 4         | VCC, 5V
+5                 | 5              | -         | Keyboard clock
+6                 | -              | 5         | Mouse clock        
+
+

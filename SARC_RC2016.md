@@ -6,7 +6,7 @@ This documentation is a result of a reverse engineering of an M386F motherboard 
 
 The SARC RC2016 configuation registers are accessed by writing the configuration register index to the I/O port 0x22 and then writing or reading the data from the I/O port 0x23
 
-Register Index | Register Bits | Function                                                                   | Default Settings
+Register Index | Register Bits | Function                                                                   | Default Settings and Notes
 ---------------|---------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------
 0x80           | Bits 7-5      | Unknown                                                                    | Read as 000 on both AMI 5.20 and Award 4.50 BIOSes
 0x80           | Bit 4         | Current turbo switch state: 0 = on, 1 = off                                | Appears to be read-only, reflecting the current state of the turbo switch. Also see 0x90, bit 6
@@ -42,8 +42,8 @@ Register Index | Register Bits | Function                                       
 0x87           | Bit 5         | Turbo control: 0 = turbo off, 1 = turbo on                                 | Set by AWARD BIOS according to the "Boot Up System Speed" configuration setting. Can be changed using Ctrl-Alt-Plus/Minus. (1)
 0x87           | Bit 4         | Turbo LED control: 0 = LED on, 1 = LED off                                 | Set by AWARD BIOS according to the "Boot Up System Speed" configuration setting. Can be changed using Ctrl-Alt-Plus/Minus. (1)
 0x87           | Bits 3-2      | Unknown                                                                    | Set to 01 by both AMI 5.20 and Award 4.50 BIOSes
-0x81           | Bit 1         | Fast A20 Gate control: 0 = disabled, 1 = enabled                           | Likely controls internal chipset A20 gate circuit. Will not work properly with Cyrix/TI CPUs that require A20 signal. Use the keyboard contoller instead. (Verify)
-0x81           | Bit 0         | Fast Reset control: set 0 and then to 1 to generate a CPU reset            | Setting to 0 and then immediately to 1 generates CPU reset. (Verify)
+0x87           | Bit 1         | Fast A20 Gate: 0 = enabled, A20 is 0, 1 = disabled, CPU A20 propagated to memory and ISA bus | Controls internal chipset A20 gate circuit. Does not work properly with Cyrix/TI CPUs that require A20M signal. Use the keyboard contoller instead.
+0x87           | Bit 0         | Fast CPU Reset: 0 = no reset, 1 = reset CPU                                | Set to 0 after a reset.
 0x88           | Bits 7-0      | Unknown                                                                    | AWARD BIOS sets to 00000100 (0x04) when 256 KiB SIMMs with parity are installed. Forcing register to 0x04 with other SIMMs doesn't seem to do anything.
 0x88 - 0x8F    | Bits 7-0      | Unknown or not implemented                                                 | Read as 00000000 with both AMI 5.20 and Award 4.50 BIOSes
 0x90           | Bit 7         | Unknown                                                                    | Set to 0 by AMI 5.20 BIOS; set to 1 by Award 4.50 BIOS

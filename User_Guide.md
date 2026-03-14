@@ -76,6 +76,16 @@ Pin | Description                 | Pin | Description
 13  | Reset switch input          | 14  | Power switch input
 15  | GND, Reset switch           | 16  | GND, Power switch
 
+## On-board LEDs and Switches
+
+The motherboard has two switches and two LEDs to simplify debug and use without an enclosure:
+* SW1 - Power switch. Turns on the ATX power supply connected to the board and powers on the board.
+* SW2 - Reset switch. Resets the CPU (cold reboot).
+* D1 - Power LED (Blue). Lights up when the board is powered on.
+* D2 - Activity LED (Red/Green):
+  * When the motherboard is powered on, this LED changes color between red and green every time A7 address line changes from 0 to 1. Typically, if this LED changes colors, indicates that the CPU is executing the code. If it remains solid red or green, it is likely that the system is stuck or the CPU is halted.
+  * When the motherboard is powered off, this LED lights up red, indicating that 5V standby voltage is applied to the motherboard.
+
 ## Memory Configuration
 
 The motherboard has two memory banks:
@@ -104,6 +114,7 @@ Bank 0 (J1, J2) | Bank 1 (J3, J3) | Memory Size
 
 The PS/2 connector on Alsea River 386SX Motherboard contains PS/2 keyboard and PS/2 mouse signals. A PS/2 Y splitter cable should be used to connect both a keyboard and a mouse.
 Note that with most Y splitter cables, the keyboard should be connected to the mouse connector, and the mouse should be connected to the keyboard connector. Refer to the table below for the splitter cable pinout.
+Make sure to set jumper JP6 to 1-2 position for the PS/2 mouse operation.
 
 ### PS/2 Combo Port Pinout
 

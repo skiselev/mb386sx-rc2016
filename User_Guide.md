@@ -83,7 +83,7 @@ The motherboard has two switches and two LEDs to simplify debug and use without 
 * SW2 - Reset switch. Resets the CPU (cold reboot).
 * D1 - Power LED (Blue). Lights up when the board is powered on.
 * D2 - Activity LED (Red/Green):
-  * When the motherboard is powered on, this LED changes color between red and green every time A7 address line changes from 0 to 1. Typically, if this LED changes colors, indicates that the CPU is executing the code. If it remains solid red or green, it is likely that the system is stuck or the CPU is halted.
+  * When the motherboard is powered on, this LED changes color between red and green every time A7 address line changes from 0 to 1. Typically, if this LED changes colors or appears to be yellow, indicates that the CPU is executing the code. If it remains solid red or green, it is likely that the system is stuck or the CPU is halted.
   * When the motherboard is powered off, this LED lights up red, indicating that 5V standby voltage is applied to the motherboard.
 
 ## Memory Configuration

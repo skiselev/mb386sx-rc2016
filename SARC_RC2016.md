@@ -44,15 +44,50 @@ Register Index | Register Bits | Function                                       
 0x87           | Bits 3-2      | Unknown                                                                    | Set to 01 by both AMI 5.20 and Award 4.50 BIOSes
 0x87           | Bit 1         | Fast A20 Gate: 0 = enabled, A20 is 0, 1 = disabled, CPU A20 propagated to memory and ISA bus | Controls internal chipset A20 gate circuit. Does not work properly with Cyrix/TI CPUs that require A20M signal. Use the keyboard contoller instead.
 0x87           | Bit 0         | Fast CPU Reset: 0 = no reset, 1 = reset CPU                                | Set to 0 after a reset.
-0x88           | Bits 7-0      | Unknown                                                                    | AWARD BIOS sets to 00000100 (0x04) when 256 KiB SIMMs with parity are installed. Forcing register to 0x04 with other SIMMs doesn't seem to do anything.
-0x88 - 0x8F    | Bits 7-0      | Unknown or not implemented                                                 | Read as 00000000 with both AMI 5.20 and Award 4.50 BIOSes
-0x90           | Bit 7         | Unknown                                                                    | Set to 0 by AMI 5.20 BIOS; set to 1 by Award 4.50 BIOS
-0x90           | Bit 6         | Current turbo switch state: 0 = off, 1 = on                                | Appears to be read-only, reflecting the current state of the turbo switch. Also see 0x80, bit 4
-0x90           | Bit 5         | Unknown                                                                    | Set 0 to by both AMI 5.20 and Award 4.50 BIOSes
-0x90           | Bit 4         | Number of wait states: 0 = 1 wait state, 1 = 0 wait states                 | Set by the BIOS according to the wait states configuration setting
-0x90           | Bit 3         | RAS to CAS width: 0 = CLK2 * 4, 1 = CLK2 * 6                               | Set by AMI 5.20 BIOS according to the RAS to CAS width setting. Award 5.20 BIOS sets to 0 for 25 and 33 MHz CPUs and to 1 for 40 MHz CPUs
+0x88           | Bits 3-0      | EMM Page Frame 0 map address (see table below)                             | Set to 0000 by AMI 5.20 BIOS. Award 4.50 BIOS sets to 0100 when 256 KiB SIMMs are installed.
+0x88           | Bits 5-4      | EMM Page Frame 0 physical address, bits 15-14                              | Set to 00 by both AMI 5.20 and Award 4.50 BIOSes.
+0x88           | Bits 7-6      | EMM Page Frame 0 function: 00 = disabled, 01 = aliased to System BIOS, 10 = mapped to AT bus, 11 = mapped to DRAM | Set to 00 by both AMI 5.20 and Award 4.50 BIOSes.
+0x89           | Bits 7-0      | EMM Page Frame 0 physical address, bits 23-16                              | Set to 00000000 by both AMI 5.20 and Award 4.50 BIOSes.
+0x8A           | Bits 3-0      | EMM Page Frame 1 map address (see table below)                             | Set to 0000 by both AMI 5.20 and Award 4.50 BIOSes.
+0x8A           | Bits 5-4      | EMM Page Frame 1 physical address, bits 15-14                              | Set to 00 by both AMI 5.20 and Award 4.50 BIOSes.
+0x8A           | Bits 7-6      | EMM Page Frame 1 function: 00 = disabled, 01 = aliased to System BIOS, 10 = mapped to AT bus, 11 = mapped to DRAM | Set to 00 by both AMI 5.20 and Award 4.50 BIOSes.
+0x8B           | Bits 7-0      | EMM Page Frame 1 physical address, bits 23-16                              | Set to 00000000 by both AMI 5.20 and Award 4.50 BIOSes.
+0x8C           | Bits 3-0      | EMM Page Frame 2 map address (see table below)                             | Set to 0000 by both AMI 5.20 and Award 4.50 BIOSes.
+0x8C           | Bits 5-4      | EMM Page Frame 2 physical address, bits 15-14                              | Set to 00 by both AMI 5.20 and Award 4.50 BIOSes.
+0x8C           | Bits 7-6      | EMM Page Frame 2 function: 00 = disabled, 01 = aliased to System BIOS, 10 = mapped to AT bus, 11 = mapped to DRAM | Set to 00 by both AMI 5.20 and Award 4.50 BIOSes.
+0x8D           | Bits 7-0      | EMM Page Frame 2 physical address, bits 23-16                              | Set to 00000000 by both AMI 5.20 and Award 4.50 BIOSes.
+0x8E           | Bits 3-0      | EMM Page Frame 3 map address (see table below)                             | Set to 0000 by both AMI 5.20 and Award 4.50 BIOSes.
+0x8E           | Bits 5-4      | EMM Page Frame 3 physical address, bits 15-14                              | Set to 00 by both AMI 5.20 and Award 4.50 BIOSes.
+0x8E           | Bits 7-6      | EMM Page Frame 3 function: 00 = disabled, 01 = aliased to System BIOS, 10 = mapped to AT bus, 11 = mapped to DRAM | Set to 00 by both AMI 5.20 and Award 4.50 BIOSes.
+0x8F           | Bits 7-0      | EMM Page Frame 3 physical address, bits 23-16                              | Set to 00000000 by both AMI 5.20 and Award 4.50 BIOSes.
+0x90           | Bit 7         | Unknown                                                                    | Set to 0 by AMI 5.20 BIOS; set to 1 by Award 4.50 BIOS.
+0x90           | Bit 6         | Current turbo switch state: 0 = off, 1 = on                                | Appears to be read-only, reflecting the current state of the turbo switch. Also see 0x80, bit 4.
+0x90           | Bit 5         | Unknown                                                                    | Set 0 to by both AMI 5.20 and Award 4.50 BIOSes.
+0x90           | Bit 4         | Number of wait states: 0 = 1 wait state, 1 = 0 wait states                 | Set by the BIOS according to the wait states configuration setting.
+0x90           | Bit 3         | RAS to CAS width: 0 = CLK2 * 4, 1 = CLK2 * 6                               | Set by AMI 5.20 BIOS according to the RAS to CAS width setting. Award 5.20 BIOS sets to 0 for 25 and 33 MHz CPUs and to 1 for 40 MHz CPUs.
 
 1. Some Award BIOS calls set these bits to the current BIOS turbo setting regardless of the turbo switch or modifications to the configuration register
+
+### EMM Page Frame Map Address
+
+Register 0x88/0x8A/0x8C/0x8E, Bits 3-0 | Page Frame Map Address
+---------------------------------------|-----------------------
+0000                                   | 0xC000
+0001                                   | 0xC400
+0010                                   | 0xC800
+0011                                   | 0xCC00
+0100                                   | 0xD000
+0101                                   | 0xD400
+0110                                   | 0xD800
+0111                                   | 0xDC00
+1000                                   | 0xE000
+1001                                   | 0xE400
+1010                                   | 0xE800
+1011                                   | 0xEC00
+1100                                   | Unknown
+1101                                   | Unknown
+1110                                   | Unknown
+1111                                   | Unknown
 
 ### Chipset Auto Settings - Award 4.50 BIOS
 

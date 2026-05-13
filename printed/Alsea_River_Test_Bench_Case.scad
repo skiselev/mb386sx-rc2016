@@ -530,10 +530,24 @@ module case_mb_tray() {
             }
             
         }
+        // cutouts under the motherboard
+        mb_cutout_x_offset=mb_to_case_back+bracket_depth+bar_width;
+        mb_left_cutout_y_offset=bar_width+cable_routing_width_left;
+        mb_right_cutout_y_offset=(inside_width+bar_width)/2;
+        mb_left_cutout_width=inside_width/2-bar_width*1.5-cable_routing_width_left;
+        mb_right_cutout_width=inside_width/2-bar_width*1.5;
+//        mb_right_cutout_width=inside_width/2-bar_width*1.5-cable_routing_width_right;
+        mb_left_cutout_depth=inside_depth-mb_cutout_x_offset-bar_width;
+        mb_right_cutout_depth=inside_depth-mb_cutout_x_offset-bar_width;
         // left cutout under the motherboard
-        translate([0,0,0]) {
-            
+        translate([mb_cutout_x_offset,mb_left_cutout_y_offset,-tolerance]) {
+            rounded_cube4(mb_left_cutout_depth,mb_left_cutout_width,case_thickness+tolerance*2,corner_radius);
         }
+        // right cutout under the motherboard
+        translate([mb_cutout_x_offset,mb_right_cutout_y_offset,-tolerance]) {
+            rounded_cube4(mb_right_cutout_depth,mb_right_cutout_width,case_thickness+tolerance*2,corner_radius);
+        }
+
         // power supply vent opening
         translate([psu_x_offset+psu_depth/2+10,psu_y_offset+psu_width/2,-tolerance]) {
             cylinder(h=case_thickness+tolerance*2, d=psu_fan_diameter);
@@ -1103,6 +1117,31 @@ module rounded_cube2(depth,width,height,radius) {
         }
         translate([0,0,radius]) {
             cube([depth,width,height-radius]);
+        }
+    }
+}
+
+// rectangluar prism with rounded edges on 4 out of 12 sides
+// edges along Z access are rounded
+module rounded_cube4(x,y,z,radius) {
+    union() {
+        translate([radius,radius,0]) {
+            cylinder(h=z,r=radius);
+        }
+        translate([radius,y-radius,0]) {
+            cylinder(h=z,r=radius);
+        }
+        translate([x-radius,radius,0]) {
+            cylinder(h=z,r=radius);
+        }
+        translate([x-radius,y-radius,0]) {
+            cylinder(h=z,r=radius);
+        }
+        translate([radius,0,0]) {
+            cube([x-radius*2,y,z]);
+        }
+        translate([0,radius,0]) {
+            cube([x,y-radius*2,z]);
         }
     }
 }

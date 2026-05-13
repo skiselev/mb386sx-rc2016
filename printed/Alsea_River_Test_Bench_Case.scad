@@ -15,20 +15,17 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-// TODO:
-// - Cutouts in the motherboard tray to minimize print time and material use
-// - Cutouts in the bottom panel to minimize print time and material use
-// - Separate drives tray and left PSU bracket part
-
 // set only one of the variables below to true to draw the respective part
 generate_preview = false;
 render_back = false;
-render_mb_tray = true;
+render_mb_tray = false;
 render_bottom = false;
+render_right_drives_bracket = false;
+render_left_drives_bracket = false;
 render_left = false;
 render_right = false;
 render_slots_cover = false;
-render_speaker_bracket = false;
+render_speaker_bracket = true;
 
 // All dimensions are in mm
 in2mm=25.4;                 // mm per inch
@@ -134,8 +131,8 @@ support_screw_length=10;
 // speaker
 speaker_radius=36/2;
 speaker_height=4.5;
-speaker_to_case_back=inside_depth-speaker_radius-case_thickness-5;
-speaker_to_case_left=speaker_radius-case_thickness+125;
+speaker_x_offset=inside_depth-speaker_radius-case_thickness-5;
+speaker_y_offset=(inside_width+speaker_radius)/2+bar_width;
 
 // distance between ventilation holes
 vent_hole_radius=3;
@@ -166,10 +163,16 @@ if (render_bottom) {
         case_bottom();
     }
 }
+if (render_right_drives_bracket) {
+    right_drives_bracket();
+}
+if (render_left_drives_bracket) {
+    left_drives_bracket();
+}
 if (render_mb_tray) {
-//    rotate([0,0,-90]) {
+    rotate([0,0,-90]) {
         case_mb_tray();
-//    }
+    }
 }
 if (render_left) {
     rotate([0,0,-90]) {
@@ -210,6 +213,9 @@ if (generate_preview) {
     // case bottom
     translate([0,case_thickness,-bottom_to_mb_height-case_thickness]) {
         color("magenta") case_bottom();
+        // drives mount brackets
+        color("pink") right_drives_bracket();
+        color("pink") left_drives_bracket();
     }
 
     // left panel
@@ -257,7 +263,7 @@ if (generate_preview) {
     }
 
     // speaker bracket
-    translate([speaker_to_case_back+case_thickness,speaker_to_case_left+case_thickness,speaker_height+case_thickness*2]) {
+    translate([speaker_x_offset+case_thickness,speaker_y_offset+case_thickness,speaker_height+case_thickness*2]) {
         rotate([180,0,90]) {
             color("purple") speaker_bracket();
         }
@@ -423,10 +429,6 @@ module case_front_back_panel() {
         translate([case_height-case_thickness*2,case_thickness+15,case_thickness]) {
             cube([case_thickness,case_width-case_thickness*2-15*2,case_thickness]);
         }
-        // side support bar
-        translate([case_thickness+15,case_thickness,case_thickness]) {
-            cube([case_height-case_thickness*2-15*2,case_thickness,case_thickness]);
-        }
         
         // top left nut inserts
         translate([case_thickness+3,case_thickness+6,case_thickness]) {
@@ -459,14 +461,9 @@ module case_front_back_panel() {
 module case_mb_tray() {
     difference() {
         union() {
-            cube([inside_depth+case_thickness-corner_radius,inside_width,case_thickness]);
-            translate([inside_depth+case_thickness-corner_radius,0,corner_radius]) {
-                rotate([-90,0,0]) {
-                    cylinder(h=inside_width,r=corner_radius);
-                }
-            }
+            cube([inside_depth+case_thickness,inside_width,case_thickness]);
             // speaker
-            translate([speaker_to_case_back,speaker_to_case_left,case_thickness]){
+            translate([speaker_x_offset,speaker_y_offset,case_thickness]){
                 // speaker center circle
                 cylinder(h=speaker_height,r=speaker_radius+case_thickness);
                 // speaker mount standoffs
@@ -515,7 +512,7 @@ module case_mb_tray() {
             }
         }
         // right cutout for cables routing
-        translate([inside_depth-cable_routing_depth_right-12-3,inside_width-cable_routing_width_right,-tolerance]) {
+        translate([inside_depth-cable_routing_depth_right-12-case_thickness,inside_width-cable_routing_width_right,-tolerance]) {
             translate([0,corner_radius,0]) {
                 cube([cable_routing_depth_right,cable_routing_width_right-corner_radius+tolerance,case_thickness+tolerance*2]);
             }
@@ -535,27 +532,34 @@ module case_mb_tray() {
         mb_left_cutout_y_offset=bar_width+cable_routing_width_left;
         mb_right_cutout_y_offset=(inside_width+bar_width)/2;
         mb_left_cutout_width=inside_width/2-bar_width*1.5-cable_routing_width_left;
-        mb_right_cutout_width=inside_width/2-bar_width*1.5;
-//        mb_right_cutout_width=inside_width/2-bar_width*1.5-cable_routing_width_right;
+        mb_right_back_cutout_width=inside_width/2-bar_width*1.5;
+        mb_right_front_cutout_width=inside_width/2-bar_width*1.5-cable_routing_width_right;
         mb_left_cutout_depth=inside_depth-mb_cutout_x_offset-bar_width;
-        mb_right_cutout_depth=inside_depth-mb_cutout_x_offset-bar_width;
+        mb_right_back_cutout_depth=inside_depth-mb_cutout_x_offset-bar_width-cable_routing_depth_right-12-case_thickness;
+        mb_right_front_cutout_depth=speaker_x_offset-speaker_radius-mb_cutout_x_offset-case_thickness;
         // left cutout under the motherboard
         translate([mb_cutout_x_offset,mb_left_cutout_y_offset,-tolerance]) {
             rounded_cube4(mb_left_cutout_depth,mb_left_cutout_width,case_thickness+tolerance*2,corner_radius);
         }
         // right cutout under the motherboard
+        // right cutout - back part
         translate([mb_cutout_x_offset,mb_right_cutout_y_offset,-tolerance]) {
-            rounded_cube4(mb_right_cutout_depth,mb_right_cutout_width,case_thickness+tolerance*2,corner_radius);
+            rounded_cube4(mb_right_back_cutout_depth,mb_right_back_cutout_width,case_thickness+tolerance*2,corner_radius);
         }
-
-        // power supply vent opening
-        translate([psu_x_offset+psu_depth/2+10,psu_y_offset+psu_width/2,-tolerance]) {
-            cylinder(h=case_thickness+tolerance*2, d=psu_fan_diameter);
-            cylinder(h=0.5+tolerance, d1=psu_fan_diameter+1+tolerance*2,d2=psu_fan_diameter);
-
+        // right cutout - front part
+        translate([mb_cutout_x_offset,mb_right_cutout_y_offset,-tolerance]) {
+            rounded_cube4(mb_right_front_cutout_depth,mb_right_front_cutout_width,case_thickness+tolerance*2,corner_radius);
         }
-        translate([psu_x_offset+psu_depth/2+10,psu_y_offset+psu_width/2,case_thickness-0.5]) {
-            cylinder(h=0.5+tolerance, d1=psu_fan_diameter, d2=psu_fan_diameter+1+tolerance*2);
+        // corner between two cutouts
+        translate([mb_cutout_x_offset+mb_right_back_cutout_depth,mb_right_cutout_y_offset+mb_right_front_cutout_width,-tolerance]) {
+            difference() {
+                translate([-tolerance,-tolerance,0]) {
+                    cube([corner_radius+tolerance,corner_radius+tolerance,case_thickness+tolerance*2]);
+                }
+                translate([corner_radius,corner_radius,0]) {
+                    cylinder(h=case_thickness+tolerance*2,r=corner_radius);
+                }
+            }
         }
 
         // ISA brackets cut-outs
@@ -568,7 +572,7 @@ module case_mb_tray() {
         }
         
         // speaker cut-outs
-        translate([speaker_to_case_back,speaker_to_case_left,case_thickness]){
+        translate([speaker_x_offset,speaker_y_offset,case_thickness]){
             // speaker center cut-out
             cylinder(h=speaker_height+tolerance,r=speaker_radius+tolerance);
             translate([15,15,0]) {
@@ -657,9 +661,44 @@ module case_mb_tray() {
 }
 
 module case_bottom() {
-    rotate([0,0,-90]) {
-        translate([-inside_width,0,0]) {
-            rounded_cube2(inside_width,case_depth,case_thickness,corner_radius);
+    difference () {
+        rotate([0,0,-90]) {
+            translate([-inside_width,0,0]) {
+                rounded_cube2(inside_width,case_depth,case_thickness,corner_radius);
+            }
+        }
+        // cutouts in the case bottom
+        bottom_cutout_x_offset=bar_width;
+        bottom_left_cutout_y_offset=bar_width;
+        bottom_right_cutout_y_offset=(inside_width+bar_width)/2;
+        bottom_cutout_width=inside_width/2-bar_width*1.5;
+        bottom_cutout_depth=case_depth-bottom_cutout_x_offset-bar_width;
+        // left cutout in the case bottom
+        translate([bottom_cutout_x_offset,bottom_left_cutout_y_offset,-tolerance]) {
+            rounded_cube4(bottom_cutout_depth,bottom_cutout_width,case_thickness+tolerance*2,corner_radius);
+        }
+        // right cutout in the case bottom
+        translate([bottom_cutout_x_offset,bottom_right_cutout_y_offset,-tolerance]) {
+            rounded_cube4(bottom_cutout_depth,bottom_cutout_width,case_thickness+tolerance*2,corner_radius);
+        }
+        // center front support screw hole
+        translate([case_depth-support_width/2,inside_width/2,0]) {
+            m3_flat_screw_hole();
+        }
+        // center back support screw hole
+        translate([psu_x_offset+support_width/2,drive_y_offset+hdd_width+tolerance+case_thickness,0]) {
+            m3_flat_screw_hole();
+        }
+        // left drives bracket screw holes
+        translate([hdd_x_offset+case_thickness-hdd_mount_depth_3,drive_y_offset-case_thickness-tolerance,0]) {
+        // left front drives bracket screw hole
+            translate([hdd_mount_depth_3-hdd_mount_depth_1-screw_to_edge-support_width/2,0,-tolerance]) {
+                m3_flat_screw_hole();
+            }
+        // left back drives bracket screw hole
+            translate([floppy_mount_depth_1-hdd_mount_depth_1+hdd_mount_depth_3-floppy_mount_depth_3+screw_to_edge+support_width/2,0,-tolerance]) {
+                m3_flat_screw_hole();
+            }
         }
     }
     // nut insert - back left
@@ -686,11 +725,37 @@ module case_bottom() {
             nut_insert_two_round_corners();
         }
     }
-    // left drives mounting bracket
+}
+
+// left drives mounting bracket
+module left_drives_bracket() {
     translate([hdd_x_offset+case_thickness-hdd_mount_depth_3,drive_y_offset-case_thickness-tolerance,case_thickness]) {
-        drives_mount();
+        difference() {
+            union() {
+                drives_mount();
+                // back bracket support
+                translate([floppy_mount_depth_1-hdd_mount_depth_1+hdd_mount_depth_3-floppy_mount_depth_3+screw_to_edge,-case_thickness,0]) {
+                    rounded_cube4(support_width,case_thickness*2,support_width,corner_radius);
+                }
+                // front bracket support
+                translate([hdd_mount_depth_3-hdd_mount_depth_1-screw_to_edge-support_width,-case_thickness,0]) {
+                    rounded_cube4(support_width,case_thickness*2,support_width,corner_radius);
+                }
+            }
+             // front mount hole
+            translate([hdd_mount_depth_3-hdd_mount_depth_1-screw_to_edge-support_width/2,0,-tolerance]) {
+                cylinder(h=support_screw_length+tolerance,r=m3_tap_hole_radius);
+            }
+            // back mount hole
+            translate([floppy_mount_depth_1-hdd_mount_depth_1+hdd_mount_depth_3-floppy_mount_depth_3+screw_to_edge+support_width/2,0,-tolerance]) {
+                cylinder(h=support_screw_length+tolerance,r=m3_tap_hole_radius);
+            }
+        }
     }
-    // right drives mounting bracket
+}
+
+// right drives and left PSU mounting bracket
+module right_drives_bracket() {
     translate([hdd_x_offset+case_thickness-hdd_mount_depth_3,drive_y_offset+hdd_width+tolerance,case_thickness]) {
         drives_mount();
     }
@@ -698,10 +763,20 @@ module case_bottom() {
     difference() {
         union() {
             translate([psu_x_offset,drive_y_offset+hdd_width+tolerance,case_thickness]) {
-                cube([hdd_x_offset+case_thickness-hdd_mount_depth_3-psu_x_offset-screw_to_edge,case_thickness,drive_z_offset+drive_spacing+hdd_mount_height]);
-                cube([case_thickness,psu_y_offset+psu_mount_width1-(drive_y_offset+hdd_width+tolerance)+screw_to_edge,bottom_to_mb_height]);
+                translate([case_thickness,0,0]) {
+                    cube([hdd_x_offset-hdd_mount_depth_3-psu_x_offset-screw_to_edge,case_thickness,drive_z_offset+drive_spacing+hdd_mount_height]);
+                }
+                translate([0,case_thickness,0]) {
+                    cube([case_thickness,psu_y_offset+psu_mount_width1-(drive_y_offset+hdd_width+tolerance)+screw_to_edge-case_thickness,bottom_to_mb_height]);
+                }
                 // center back support
-                cube([support_width,case_thickness*2,bottom_to_mb_height]);
+                rounded_cube4(support_width,case_thickness*2,bottom_to_mb_height,corner_radius);
+            }
+            translate([case_thickness+hdd_x_offset-hdd_mount_depth_1+screw_to_edge,drive_y_offset+hdd_width+tolerance,case_thickness]) {
+                cube([case_depth-(case_thickness+hdd_x_offset-hdd_mount_depth_1+screw_to_edge)-support_width+corner_radius,case_thickness,drive_z_offset+drive_spacing+hdd_mount_height]);
+            }
+            translate([case_depth-support_width,drive_y_offset+hdd_width+tolerance,case_thickness]) {
+                rounded_cube4(support_width,inside_width/2-(drive_y_offset+hdd_width+tolerance)-support_width/2+corner_radius*2,bottom_to_mb_height,corner_radius);
             }
         }
         // PSU middle left mount hole
@@ -722,8 +797,12 @@ module case_bottom() {
                 unc6_32_screw_hole();
             }
         }
-        // center back support screw hole
+        // center back support top screw hole
         translate([psu_x_offset+support_width/2,drive_y_offset+hdd_width+tolerance+case_thickness,case_thickness+bottom_to_mb_height-support_screw_length]) {
+            cylinder(h=support_screw_length+tolerance,r=m3_tap_hole_radius);
+        }
+        // center back support bottom screw hole
+        translate([psu_x_offset+support_width/2,drive_y_offset+hdd_width+tolerance+case_thickness,case_thickness-tolerance]) {
             cylinder(h=support_screw_length+tolerance,r=m3_tap_hole_radius);
         }
     }
@@ -731,19 +810,18 @@ module case_bottom() {
     translate([inside_depth-support_width/2,(inside_width-support_width)/2,case_thickness]) {
         difference() {
             // support
-            translate([0,support_width,bottom_to_mb_height]) {
-                rotate([180,0,0]) {
-                    rounded_cube8(support_width,support_width,bottom_to_mb_height,corner_radius);
-                }
-            }
-            // screw hole
+            rounded_cube4(support_width,support_width,bottom_to_mb_height,corner_radius);
+            // top screw hole
             translate([support_width/2,support_width/2,bottom_to_mb_height-support_screw_length]) {
+                cylinder(h=support_screw_length+tolerance,r=m3_tap_hole_radius);
+            }
+            // bottom screw hole
+            translate([support_width/2,support_width/2,-tolerance]) {
                 cylinder(h=support_screw_length+tolerance,r=m3_tap_hole_radius);
             }
         }
     }
 }
-
 
 // case left side
 module case_left() {
@@ -760,6 +838,10 @@ module case_left() {
             // front vertical bar
             translate([case_depth-bar_width,-bottom_to_mb_height-case_thickness,0]) {
                 rounded_cube8(bottom_to_mb_height+case_thickness*2,bar_width,case_thickness,corner_radius);
+            }
+            // side support bar
+            translate([case_thickness+tolerance,15-case_height-bottom_to_mb_height+case_thickness+tolerance,case_thickness]) {
+                cube([case_thickness,inside_height-30-tolerance*2,case_thickness]);
             }
         }
         // back bottom screw hole
